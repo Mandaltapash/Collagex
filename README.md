@@ -103,3 +103,4 @@ Example of the code needed to recover the **ads** from the **Google Firebase** t
 # Contributors
 
 - [Thiago Rodrigues](https://www.linkedin.com/in/tods/)
+# Collagex
