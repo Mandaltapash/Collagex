@@ -1,0 +1,71 @@
+<resources>
+    <string name="app_name">CollageX</string>
+    <string name="name">Name:</string>
+    <string name="e_mail">E-mail:</string>
+    <string name="password">Password:</string>
+    <string name="confirm_password">Confirm password:</string>
+    <string name="register">Register</string>
+    <string name="login">Login</string>
+    <string name="not_registered">Not registered yet? \n Create your account for free!</string>
+    <string name="my_adds">My adds</string>
+    <string name="logout">Logout</string>
+    <string name="title_activity_my_adds">MyAddsActivity</string>
+    <string name="title">Title</string>
+    <string name="description">Description</string>
+    <string name="register_ad">Register ad</string>
+    <string-array name="category">
+        <item>Furniture</item>
+        <item>Electronics</item>
+        <item>Fashion</item>
+        <item>Books</item>
+        <item>Sports</item>
+        <item>Free Zone (giveaway items)</item>
+        <item>Other</item>
+    </string-array>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="phone_number">Phone number</string>
+    <string name="value">Value</string>
+    <string name="ad_title">Ad Title</string>
+    <string name="dash">|</string>
+    <string name="region">Region</string>
+    <string name="category">Category</string>
+    <string name="uf">UF</string>
+    <string name="call">Call</string>
+    <string name="search_hint">Search Items...</string>
+    <string name="all_categories">All Categories</string>
+        <string name="fresh_recommendations">Fresh recommendations</string>
+    
+        <string-array name="guwahati_districts">
+            <item>Select your district</item>
+            <item>Kamrup Metropolitan</item>
+            <item>Kamrup Rural</item>
+            <item>Other</item>
+        </string-array>
+    
+        <string-array name="colleges_kamrup_metropolitan">
+            <item>Select your college</item>
+            <item>Assam Engineering College</item>
+            <item>Guwahati Medical College and Hospital</item>
+            <item>Indian Institute of Technology Guwahati</item>
+            <item>Cotton University</item>
+            <item>Handique Girls\' College</item>
+        </string-array>
+    
+        <string-array name="colleges_kamrup_rural">
+            <item>Select your college</item>
+            <item>Pragjyotish College</item>
+            <item>L.C.B. College</item>
+        </string-array>
+    
+        <string-array name="colleges_other">
+            <item>Select your college</item>
+            <item>Other College 1</item>
+            <item>Other College 2</item>
+        </string-array>
+    
+    </resources>
+

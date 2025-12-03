@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.AdDetailsActivity">
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPagerImages"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/ad_details_carousel_layout_height"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textAdDetailTitle"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/ad_details_title_layout_height"
+        android:layout_marginTop="@dimen/ad_details_title_layout_margin_top"
+        android:background="@drawable/ic_background_plain_text"
+        android:padding="@dimen/ad_details_title_layout_padding"
+        android:text="@string/title"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="@dimen/ad_details_text_size"
+        android:layout_marginStart="@dimen/ad_details_layout_margin_start_end"
+        android:layout_marginEnd="@dimen/ad_details_layout_margin_start_end"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/viewPagerImages" />
+
+    <TextView
+        android:id="@+id/textAdDetailValue"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/ad_details_value_layout_height"
+        android:layout_marginTop="@dimen/ad_details_value_layout_margin_top"
+        android:background="@drawable/ic_background_plain_text"
+        android:padding="@dimen/ad_details_value_padding"
+        android:text="@string/value"
+        android:layout_marginStart="@dimen/ad_details_layout_margin_start_end"
+        android:layout_marginEnd="@dimen/ad_details_layout_margin_start_end"
+        android:textSize="@dimen/ad_details_text_size"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textAdDetailTitle" />
+
+    <!-- Seller info card -->
+    <LinearLayout
+        android:id="@+id/sellerContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/ad_details_layout_margin_start_end"
+        android:layout_marginEnd="@dimen/ad_details_layout_margin_start_end"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/ic_background_plain_text"
+        android:orientation="horizontal"
+        android:padding="12dp"
+        app:layout_constraintTop_toBottomOf="@id/textAdDetailValue"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageView
+            android:id="@+id/imageSellerAvatar"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@mipmap/ic_launcher_round"
+            android:scaleType="centerCrop" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_marginStart="12dp">
+
+            <TextView
+                android:id="@+id/textSellerName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Seller name"
+                android:textStyle="bold"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/textSellerRating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0.0 (0 reviews)"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/textSellerLocation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Location"
+                android:textSize="12sp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp">
+
+                <Button
+                    android:id="@+id/buttonViewProfile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Profile" />
+
+                <Button
+                    android:id="@+id/buttonMessageSeller"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Message"
+                    android:layout_marginStart="8dp" />
+
+                <Button
+                    android:id="@+id/buttonRateSeller"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Rate"
+                    android:layout_marginStart="8dp" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textAdDetailDescription"
+        android:layout_width="@dimen/ad_details_description_layout_width"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/ad_details_description_layout_margin_top_bottom"
+        android:layout_marginBottom="@dimen/ad_details_description_layout_margin_top_bottom"
+        android:background="@drawable/ic_background_plain_text"
+        android:inputType="textMultiLine"
+        android:padding="@dimen/ad_details_description_layout_padding"
+        android:scrollbarAlwaysDrawVerticalTrack="true"
+        android:text="@string/description"
+        android:textSize="@dimen/ad_details_text_size"
+        android:layout_marginStart="@dimen/ad_details_layout_margin_start_end"
+        android:layout_marginEnd="@dimen/ad_details_layout_margin_start_end"
+        app:layout_constraintBottom_toTopOf="@+id/bottomButtons"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/sellerContainer" />
+
+    <LinearLayout
+        android:id="@+id/bottomButtons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="@dimen/ad_details_button_call_layout_margin_bottom"
+        android:layout_marginStart="@dimen/ad_details_layout_margin_start_end"
+        android:layout_marginEnd="@dimen/ad_details_layout_margin_start_end"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <Button
+            android:id="@+id/buttonCall"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_background_plain_text"
+            android:text="@string/call" />
+
+        <Button
+            android:id="@+id/buttonBuy"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_background_plain_text"
+            android:text="Buy"
+            android:layout_marginStart="8dp" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

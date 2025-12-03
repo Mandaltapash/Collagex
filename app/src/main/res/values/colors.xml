@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Brand palette -->
+    <color name="purple_primary">#002F34</color> <!-- OLX Blue -->
+    <color name="orange_accent">#FF8C00</color>   <!-- Vibrant Orange -->
+    <color name="green_support">#008000</color>   <!-- Standard Green -->
+
+    <!-- Neutrals -->
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="light_gray">#F0F0F0</color>     <!-- Light Gray for backgrounds -->
+    <color name="dark_gray">#333333</color>      <!-- Dark Gray for primary text -->
+    <color name="text_primary">@color/dark_gray</color>
+    <color name="text_secondary">#6E7583</color> <!-- A slightly lighter dark gray for secondary text -->
+    <color name="colorOnPrimary">#FFFFFF</color>   <!-- Text/icons on primary color surfaces -->
+    <color name="colorOnSecondary">#FFFFFF</color> <!-- Text/icons on secondary color surfaces -->
+    <color name="icon_tint">#BDBDBD</color>      <!-- Default icon tint -->
+    <color name="home_background">@color/light_gray</color>
+    <color name="card_background">@color/white</color>
+    <color name="chip_background">#F1F3F8</color>
+
+    <!-- Custom aliases to new palette -->
+    <color name="custom_primary">@color/purple_primary</color>
+    <color name="custom_primary_dark">#001A1C</color> <!-- A darker shade of blue -->
+    <color name="custom_accent">@color/orange_accent</color>
+    <color name="custom_gray">@color/dark_gray</color>
+    <color name="custom_gray_bc">@color/light_gray</color>
+
+    <!-- Original Default Material Component Colors (restored for theme compatibility) -->
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+</resources>

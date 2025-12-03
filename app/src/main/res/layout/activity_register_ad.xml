@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/register_add_linear_layout_padding"
+        tools:context=".activity.RegisterAddActivity" >
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="@dimen/register_add_linear_layout_width"
+            android:layout_height="@dimen/register_add_linear_layout_height"
+            android:layout_marginStart="@dimen/register_add_linear_layout_margin_start_end"
+            android:layout_marginEnd="@dimen/register_add_linear_layout_margin_start_end"
+            android:orientation="horizontal"
+            android:padding="@dimen/register_add_linear_layout_padding"
+            android:elevation="@dimen/register_add_linear_layout_elevation"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/imageAd1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:padding="@dimen/register_add_linear_layout_image_padding"
+                app:srcCompat="@drawable/standard" />
+
+            <ImageView
+                android:id="@+id/imageAd2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:padding="@dimen/register_add_linear_layout_image_padding"
+                app:srcCompat="@drawable/standard" />
+
+            <ImageView
+                android:id="@+id/imageAd3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:padding="@dimen/register_add_linear_layout_image_padding"
+                app:srcCompat="@drawable/standard" />
+        </LinearLayout>
+
+        <Spinner
+            android:id="@+id/categoriesSpinner"
+            android:layout_width="@dimen/register_add_category_spinner_width"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/register_add_category_spinner_layout_margin_top"
+            android:layout_marginEnd="@dimen/register_add_category_spinner_layout_margin_end"
+            android:elevation="@dimen/register_add_category_spinner_elevation"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+
+        <Spinner
+            android:id="@+id/districtSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/register_add_text_layout_margin_start_end_top"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="@dimen/register_add_text_layout_margin_start_end_top"
+            android:background="@drawable/ic_background_plain_text"
+            android:paddingStart="@dimen/register_add_text_layout_padding_start"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/categoriesSpinner" />
+
+        <Spinner
+            android:id="@+id/collegeSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/register_add_text_layout_margin_start_end_top"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="@dimen/register_add_text_layout_margin_start_end_top"
+            android:background="@drawable/ic_background_plain_text"
+            android:paddingStart="@dimen/register_add_text_layout_padding_start"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/districtSpinner" />
+
+        <EditText
+            android:id="@+id/editTitle"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/register_add_text_layout_height"
+            android:layout_marginStart="@dimen/register_add_text_layout_margin_start_end_top"
+            android:layout_marginTop="@dimen/register_add_text_layout_margin_start_end_top"
+            android:layout_marginEnd="@dimen/register_add_text_layout_margin_start_end_top"
+            android:background="@drawable/ic_background_plain_text"
+            android:elevation="@dimen/register_add_text_elevation"
+            android:ems="10"
+            android:hint="@string/title"
+            android:textColorHint="@color/black"
+            android:inputType="textPersonName"
+            android:paddingStart="@dimen/register_add_text_layout_padding_start"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/collegeSpinner" />
+
+        <com.blackcat.currencyedittext.CurrencyEditText
+            android:id="@+id/editValue"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/register_add_text_layout_height"
+            android:layout_marginStart="@dimen/register_add_text_layout_margin_start_end_top"
+            android:layout_marginTop="@dimen/register_add_text_layout_margin_start_end_top"
+            android:layout_marginEnd="@dimen/register_add_text_layout_margin_start_end_top"
+            android:background="@drawable/ic_background_plain_text"
+            android:elevation="@dimen/register_add_text_elevation"
+            android:ems="10"
+            android:hint="@string/value"
+            android:inputType="textPersonName"
+            android:paddingStart="@dimen/register_add_text_layout_padding_start"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTitle"
+            />
+
+        <EditText
+            android:id="@+id/editDescription"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/register_add_description_layout_height"
+            android:layout_marginStart="@dimen/register_add_text_layout_margin_start_end_top"
+            android:layout_marginTop="@dimen/register_add_text_layout_margin_start_end_top"
+            android:textColorHint="@color/black"
+            android:layout_marginEnd="@dimen/register_add_text_layout_margin_start_end_top"
+            android:background="@drawable/ic_background_plain_text"
+            android:elevation="@dimen/register_add_text_elevation"
+            android:ems="10"
+            android:hint="@string/description"
+            android:inputType="textPersonName|textMultiLine"
+            android:paddingStart="@dimen/register_add_text_layout_padding_start"
+            android:textAlignment="textStart"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editValue" />
+
+        <Button
+            android:id="@+id/buttonRegisterAd"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/register_add_button_layout_margin_start_end"
+            android:layout_marginTop="@dimen/register_add_button_layout_margin_top"
+            android:layout_marginEnd="@dimen/register_add_button_layout_margin_start_end"
+            android:background="@drawable/ic_background_plain_text"
+            android:elevation="@dimen/register_add_button_elevation"
+            android:text="@string/register_ad"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editDescription"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="@dimen/register_add_button_layout_margin_top" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

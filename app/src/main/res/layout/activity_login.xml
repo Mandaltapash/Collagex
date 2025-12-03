@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.LoginActivity"
+    >
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="@dimen/login_logo_layout_width"
+        android:layout_height="@dimen/login_logo_layout_height"
+        android:layout_marginTop="@dimen/login_logo_layout_margin_top"
+        android:src="@drawable/ic_logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editLoginEmail"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/login_email_layout_height"
+        android:layout_marginStart="@dimen/login_email_layout_margin_start_end"
+        android:layout_marginTop="@dimen/login_email_layout_margin_top"
+        android:layout_marginEnd="@dimen/login_email_layout_margin_start_end"
+        android:background="@drawable/ic_background_plain_text"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        android:paddingStart="@dimen/login_email_layout_padding_start_end"
+        android:paddingEnd="@dimen/login_email_layout_padding_start_end"
+        android:drawableEnd="@drawable/ic_email_24_gray"
+        android:hint="@string/e_mail"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <EditText
+        android:id="@+id/editLoginPassword"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/login_password_layout_height"
+        android:layout_marginStart="@dimen/login_password_layout_margin_start_end"
+        android:layout_marginTop="@dimen/login_password_layout_margin_top"
+        android:layout_marginEnd="@dimen/login_password_layout_margin_start_end"
+        android:background="@drawable/ic_background_plain_text"
+        android:ems="10"
+        android:inputType="numberPassword"
+        android:paddingStart="@dimen/login_password_padding_start_end"
+        android:paddingEnd="@dimen/login_password_padding_start_end"
+        android:drawableEnd="@drawable/ic_password_24_gray"
+        android:hint="@string/password"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editLoginEmail" />
+
+    <Button
+        android:id="@+id/buttonLogin"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/login_button_layout_height"
+        android:layout_marginStart="@dimen/login_button_layout_margin_start_end"
+        android:layout_marginTop="@dimen/login_button_layout_margin_top"
+        android:layout_marginEnd="@dimen/login_button_layout_margin_start_end"
+        android:text="@string/login"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editLoginPassword"
+        android:background="@drawable/ic_background_plain_text"/>
+
+    <Button
+        android:id="@+id/buttonLoginWithPhone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/login_button_layout_margin_start_end"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="@dimen/login_button_layout_margin_start_end"
+        android:text="Login with phone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/buttonLogin"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/buttonLoginWithPhone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Not yet registered?"
+            android:textColor="@color/text_primary"/>
+
+        <TextView
+            android:id="@+id/textSignupNow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sign up now"
+            android:textColor="@color/custom_accent"
+            android:textStyle="bold"
+            android:layout_marginStart="4dp"/>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

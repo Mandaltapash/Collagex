@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <group
+        android:id="@+id/group_logged_in"
+        android:visible="false">
+        <item
+            android:id="@+id/menu_my_adds"
+            android:title="@string/my_adds">
+        </item>
+
+        <item
+            android:id="@+id/menu_log_off"
+            android:title="@string/logout">
+        </item>
+    </group>
+
+    <group
+        android:id="@+id/group_logged_out"
+        android:visible="false">
+        <item
+            android:id="@+id/menu_register"
+            android:title="@string/register">
+        </item>
+
+        <item
+            android:id="@+id/menu_log_in"
+            android:title="@string/login">
+        </item>
+    </group>
+
+</menu>

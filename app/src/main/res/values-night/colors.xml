@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--
+    ============================================================================
+    Professional Dark Theme Color Palette (OLX Inspired)
+    ============================================================================
+    This color palette is designed to provide a modern, clean, and professional
+    look for the application in dark mode, inspired by popular apps like OLX.
+    It uses shades of dark gray instead of pure black to reduce eye strain and
+    improve aesthetics.
+    ============================================================================
+    -->
+
+    <!-- Brand Palette (Dark Theme Optimized) -->
+    <color name="purple_primary">#002F34</color> <!-- OLX Blue -->
+    <color name="orange_accent">#FF8C00</color>  <!-- A softer, friendly orange -->
+    <color name="green_support">#81C784</color>  <!-- A pleasant, visible green -->
+
+    <!-- Semantic Neutrals for Dark Theme -->
+    <!-- Instead of swapping 'black' and 'white', we use semantic names for clarity. -->
+    <color name="colorOnPrimary">#FFFFFF</color>   <!-- Text/icons on primary color surfaces -->
+    <color name="colorOnSecondary">#FFFFFF</color> <!-- Text/icons on secondary color surfaces -->
+    <color name="text_primary">#E0E0E0</color>    <!-- Primary text: high-emphasis (slightly off-white) -->
+    <color name="text_secondary">#BDBDBD</color>  <!-- Secondary text: medium-emphasis -->
+    <color name="icon_tint">#BDBDBD</color>      <!-- Default icon tint -->
+
+    <!-- Background & Surface Colors (Material Design Inspired) -->
+    <!-- Using different elevations of dark gray creates a sense of depth. -->
+    <color name="home_background">#002F34</color> <!-- Base background ( darkest) -->
+    <color name="card_background">#001A1C</color> <!-- Surface color for cards, dialogs (+1dp elevation) -->
+    <color name="chip_background">#2C2C2C</color> <!-- Slightly lighter for components like chips -->
+
+    <!-- Custom Aliases for Night Theme -->
+    <color name="custom_primary">@color/purple_primary</color>
+    <color name="custom_primary_dark">#001A1C</color> <!-- Darker purple for the status bar -->
+    <color name="custom_accent">@color/orange_accent</color>
+    <color name="custom_gray">#333333</color>       <!-- A neutral gray -->
+    <color name="custom_gray_bc">#BDBDBD</color>     <!-- A light gray for borders or dividers -->
+
+    <!-- Deprecated/Legacy (Avoid using directly if possible) -->
+    <color name="black">#FFFFFFFF</color> <!-- Kept for compatibility, prefer text_primary -->
+    <color name="white">#FF000000</color> <!-- Kept for compatibility, prefer home_background -->
+    <color name="light_gray">#212121</color>
+    <color name="dark_gray">#BDBDBD</color>
+
+</resources>

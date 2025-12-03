@@ -1,0 +1,35 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!--
+    ============================================================================
+    Professional Dark Theme Definition
+    ============================================================================
+    This theme applies the professional dark color palette and defines default
+    attributes for the application in dark mode.
+    ============================================================================
+    -->
+    <style name="Theme.Project_OLX" parent="Theme.MaterialComponents.Light.DarkActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/custom_primary</item>
+        <item name="colorPrimaryVariant">@color/custom_primary_dark</item>
+        <item name="colorOnPrimary">@color/colorOnPrimary</item> <!-- Text/icons on primary color -->
+
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/custom_accent</item>
+        <item name="colorSecondaryVariant">@color/custom_accent</item>
+        <item name="colorOnSecondary">@color/colorOnSecondary</item> <!-- Text/icons on secondary color -->
+
+        <!-- Background and surface colors -->
+        <item name="android:windowBackground">@color/home_background</item>
+        <item name="colorSurface">@color/card_background</item>
+        <item name="colorOnSurface">@color/text_primary</item>
+
+        <!-- Text Colors -->
+        <item name="android:textColorPrimary">@color/text_primary</item>
+        <item name="android:textColorSecondary">@color/text_secondary</item>
+
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+
+        <!-- Customize your theme here. -->
+    </style>
+</resources>
