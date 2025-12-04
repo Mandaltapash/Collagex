@@ -1,32 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Brand palette -->
-    <color name="purple_primary">#002F34</color> <!-- OLX Blue -->
-    <color name="orange_accent">#FF8C00</color>   <!-- Vibrant Orange -->
-    <color name="green_support">#008000</color>   <!-- Standard Green -->
+    <!-- Modern Primary Gradient Colors -->
+    <color name="primary_gradient_start">#1A237E</color>   <!-- Deep Indigo -->
+    <color name="primary_gradient_end">#00ACC1</color>     <!-- Cyan -->
+    <color name="primary_dark">#0D47A1</color>             <!-- Deep Blue -->
+    <color name="primary_light">#4FC3F7</color>            <!-- Light Blue -->
 
-    <!-- Neutrals -->
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
-    <color name="light_gray">#F0F0F0</color>     <!-- Light Gray for backgrounds -->
-    <color name="dark_gray">#333333</color>      <!-- Dark Gray for primary text -->
-    <color name="text_primary">@color/dark_gray</color>
-    <color name="text_secondary">#6E7583</color> <!-- A slightly lighter dark gray for secondary text -->
-    <color name="colorOnPrimary">#FFFFFF</color>   <!-- Text/icons on primary color surfaces -->
-    <color name="colorOnSecondary">#FFFFFF</color> <!-- Text/icons on secondary color surfaces -->
-    <color name="icon_tint">#BDBDBD</color>      <!-- Default icon tint -->
-    <color name="home_background">@color/light_gray</color>
-    <color name="card_background">@color/white</color>
-    <color name="chip_background">#F1F3F8</color>
+    <!-- Modern Accent & Vibrant Colors -->
+    <color name="accent_primary">#FF6F00</color>           <!-- Vibrant Orange -->
+    <color name="accent_secondary">#FF5722</color>         <!-- Deep Orange/Coral -->
+    <color name="accent_light">#FFB74D</color>             <!-- Light Orange -->
+    <color name="accent_success">#4CAF50</color>           <!-- Modern Green -->
+    <color name="accent_warning">#FFA726</color>           <!-- Amber -->
+    <color name="accent_error">#EF5350</color>             <!-- Red -->
 
-    <!-- Custom aliases to new palette -->
-    <color name="custom_primary">@color/purple_primary</color>
-    <color name="custom_primary_dark">#001A1C</color> <!-- A darker shade of blue -->
-    <color name="custom_accent">@color/orange_accent</color>
-    <color name="custom_gray">@color/dark_gray</color>
-    <color name="custom_gray_bc">@color/light_gray</color>
+    <!-- Surface & Background Colors -->
+    <color name="surface_primary">#FFFFFF</color>          <!-- Pure White -->
+    <color name="surface_secondary">#FAFAFA</color>        <!-- Off White -->
+    <color name="background_primary">#F5F7FA</color>       <!-- Light Gray Blue -->
+    <color name="background_secondary">#E8EAF6</color>     <!-- Very Light Indigo -->
+    <color name="card_background">#FFFFFF</color>          <!-- Card White -->
+    <color name="overlay_dark">#80000000</color>           <!-- 50% Black overlay -->
+    <color name="overlay_light">#40FFFFFF</color>          <!-- 25% White overlay -->
 
-    <!-- Original Default Material Component Colors (restored for theme compatibility) -->
+    <!-- Text Colors (Material Design 3 hierarchy) -->
+    <color name="text_primary">#1C1B1F</color>             <!-- Almost Black -->
+    <color name="text_secondary">#49454F</color>           <!-- Medium Gray -->
+    <color name="text_tertiary">#79747E</color>            <!-- Light Gray -->
+    <color name="text_disabled">#C4C7C5</color>            <!-- Very Light Gray -->
+    <color name="text_on_primary">#FFFFFF</color>          <!-- White on primary -->
+    <color name="text_on_accent">#FFFFFF</color>           <!-- White on accent -->
+
+    <!-- Icon Colors -->
+    <color name="icon_active">#1C1B1F</color>              <!-- Dark -->
+    <color name="icon_inactive">#A8A8A8</color>            <!-- Gray -->
+    <color name="icon_on_accent">#FFFFFF</color>           <!-- White -->
+
+    <!-- Border & Divider Colors -->
+    <color name="border_light">#E0E0E0</color>
+    <color name="divider">#E8E8E8</color>
+    <color name="shadow_light">#1A000000</color>           <!-- 10% Black -->
+
+    <!-- Chip & Badge Colors -->
+    <color name="chip_background">#E8EAF6</color>          <!-- Light Indigo -->
+    <color name="chip_text">#3949AB</color>                <!-- Indigo -->
+    <color name="badge_background">#FF6F00</color>         <!-- Orange -->
+    <color name="badge_text">#FFFFFF</color>               <!-- White -->
+
+    <!-- Legacy Compatibility -->
+    <color name="custom_primary">#1A237E</color>
+    <color name="custom_primary_dark">#0D47A1</color>
+    <color name="custom_accent">@color/accent_primary</color>
+    <color name="orange_accent">@color/accent_primary</color>
+    <color name="purple_primary">@color/primary_dark</color>
+    <color name="green_support">@color/accent_success</color>
+    <color name="colorOnPrimary">@color/text_on_primary</color>
+    <color name="colorOnSecondary">@color/text_on_accent</color>
+    <color name="home_background">@color/background_primary</color>
+    <color name="custom_gray">@color/text_primary</color>
+    <color name="custom_gray_bc">@color/background_primary</color>
+    <color name="icon_tint">@color/icon_inactive</color>
+    
+    <!-- Standard Material Colors -->
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="light_gray">#F5F5F5</color>
+    <color name="dark_gray">#424242</color>
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>

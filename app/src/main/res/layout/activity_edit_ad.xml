@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background_primary"
-    tools:context=".activity.RegisterAddActivity">
+    tools:context=".activity.EditAdActivity">
 
     <!-- Modern AppBar -->
     <com.google.android.material.appbar.AppBarLayout
@@ -21,7 +21,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/post_ad_toolbar_height"
             android:background="@color/surface_primary"
-            app:title="Post an Ad"
+            app:title="Edit Ad"
             app:titleTextColor="@color/text_primary"
             app:navigationIcon="@drawable/ic_menu_send" />
 
@@ -79,7 +79,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Add Images (Max 6)"
+                android:text="Ad Images (Click to change)"
                 android:textColor="@color/text_secondary"
                 android:textSize="@dimen/text_body"
                 android:layout_marginTop="@dimen/spacing_large"
@@ -93,21 +93,13 @@
                 android:gravity="center"
                 android:padding="@dimen/post_ad_spacing">
 
-                <!-- Upload Icon -->
-                <ImageView
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:src="@drawable/ic_upload"
-                    android:layout_marginBottom="8dp" />
-
                 <!-- Image Preview Container -->
                 <LinearLayout
                     android:id="@+id/linearLayout2"
                     android:layout_width="match_parent"
-                    android:layout_height="80dp"
+                    android:layout_height="match_parent"
                     android:orientation="horizontal"
-                    android:gravity="center"
-                    android:layout_marginTop="8dp">
+                    android:gravity="center">
 
                     <ImageView
                         android:id="@+id/imageAd1"
@@ -232,15 +224,15 @@
                 android:paddingTop="12dp"
                 android:paddingBottom="12dp" />
 
-            <!-- Register Ad Button -->
+            <!-- Save Changes Button -->
             <Button
-                android:id="@+id/buttonRegisterAd"
+                android:id="@+id/buttonSaveChanges"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/post_ad_button_height"
                 android:layout_marginTop="@dimen/spacing_large"
                 android:layout_marginBottom="@dimen/spacing_large"
                 android:background="@drawable/bg_button_register_ad"
-                android:text="Register Ad"
+                android:text="Save Changes"
                 android:textColor="@color/text_on_accent"
                 android:textSize="@dimen/text_subtitle"
                 android:textStyle="bold"

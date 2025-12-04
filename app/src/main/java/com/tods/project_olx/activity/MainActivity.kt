@@ -108,9 +108,25 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(applicationContext, LocationActivity::class.java))
         }
         */
+        // Main filter chip
         binding.buttonFilter.setOnClickListener {
             showFilterDialog()
         }
+        
+        // Individual filter chips
+        binding.chipPrice.setOnClickListener {
+            showFilterDialog() // Opens filter dialog focused on price
+        }
+        
+        binding.chipCategory.setOnClickListener {
+            val intent = Intent(applicationContext, CategoriesActivity::class.java)
+            categoriesLauncher.launch(intent)
+        }
+        
+        binding.chipLocation.setOnClickListener {
+            showFilterDialog() // Opens filter dialog focused on location
+        }
+        
         binding.textSeeMoreCategories.setOnClickListener {
             val intent = Intent(applicationContext, CategoriesActivity::class.java)
             categoriesLauncher.launch(intent)

@@ -157,4 +157,35 @@
     <dimen name="register_add_button_layout_margin_start_end">@dimen/size_10</dimen>
     <dimen name="register_add_button_layout_margin_top">@dimen/size_20</dimen>
     <dimen name="register_add_button_elevation">@dimen/size_2</dimen>
+
+    <!-- Modern UI Dimensions -->
+    <dimen name="card_corner_radius">16dp</dimen>
+    <dimen name="card_elevation_resting">2dp</dimen>
+    <dimen name="card_elevation_raised">8dp</dimen>
+    <dimen name="card_spacing">12dp</dimen>
+    <dimen name="spacing_standard">16dp</dimen>
+    <dimen name="spacing_compact">12dp</dimen>
+    <dimen name="spacing_tight">8dp</dimen>
+    <dimen name="spacing_minimal">4dp</dimen>
+    <dimen name="spacing_large">24dp</dimen>
+    <dimen name="ad_image_height">200dp</dimen>
+    <dimen name="text_heading">24sp</dimen>
+    <dimen name="text_title">18sp</dimen>
+    <dimen name="text_body">14sp</dimen>
+    <dimen name="text_caption">12sp</dimen>
+    <dimen name="chip_height">32dp</dimen>
+    <dimen name="chip_corner_radius">16dp</dimen>
+    <dimen name="chip_padding_horizontal">12dp</dimen>
+    <dimen name="search_bar_height">48dp</dimen>
+    <dimen name="search_bar_corner_radius">24dp</dimen>
+    <dimen name="text_subtitle">16sp</dimen>
+
+    <!-- Post Ad Modern Dimensions -->
+    <dimen name="post_ad_input_height">56dp</dimen>
+    <dimen name="post_ad_spacing">16dp</dimen>
+    <dimen name="post_ad_margin_horizontal">20dp</dimen>
+    <dimen name="post_ad_button_height">56dp</dimen>
+    <dimen name="post_ad_image_upload_height">180dp</dimen>
+    <dimen name="post_ad_corner_radius">12dp</dimen>
+    <dimen name="post_ad_toolbar_height">56dp</dimen>
 </resources>

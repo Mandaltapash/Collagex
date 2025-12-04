@@ -8,8 +8,10 @@ import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
-import com.tods.project_olx.adapter.AdapterAd
+import com.tods.project_olx.R
+import com.tods.project_olx.adapter.MyAdsAdapter
 import com.tods.project_olx.databinding.ActivityMyAdsBinding
 import com.tods.project_olx.helper.RecyclerItemClickListener
 import com.tods.project_olx.model.Ad
@@ -24,7 +26,7 @@ class MyAdsActivity : AppCompatActivity() {
     private lateinit var adUserRef: DatabaseReference
     private lateinit var dialog: android.app.AlertDialog
     private var ads: MutableList<Ad> = ArrayList<Ad>()
-    private var adapterAd: AdapterAd = AdapterAd(ads)
+    private var myAdsAdapter: MyAdsAdapter = MyAdsAdapter(ads)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,6 +35,7 @@ class MyAdsActivity : AppCompatActivity() {
         configFabNewAd()
         configRecyclerView()
         recoverAds()
+        configBottomNav()
     }
 
     private fun recoverAds(){
@@ -47,7 +50,7 @@ class MyAdsActivity : AppCompatActivity() {
                     ads.add(ds.getValue(Ad::class.java)!!)
                 }
                 ads.reverse()
-                adapterAd.notifyDataSetChanged()
+                myAdsAdapter.notifyDataSetChanged()
                 dialog.dismiss()
             }
 
@@ -71,7 +74,7 @@ class MyAdsActivity : AppCompatActivity() {
         recyclerMyAds = binding.recyclerMyAds
         recyclerMyAds.layoutManager = LinearLayoutManager(this)
         recyclerMyAds.setHasFixedSize(true)
-        recyclerMyAds.adapter = adapterAd
+        recyclerMyAds.adapter = myAdsAdapter
         recyclerMyAds.addOnItemTouchListener(RecyclerItemClickListener
             (this, recyclerMyAds, object: RecyclerItemClickListener.OnItemClickListener{
             override fun onItemClick(view: View, position: Int) {
@@ -99,7 +102,7 @@ class MyAdsActivity : AppCompatActivity() {
 
     private fun configToolbar() {
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
-        supportActionBar!!.title = "My Ads"
+        supportActionBar!!.title = "My Products"
     }
 
     private fun configFabNewAd() {
@@ -112,5 +115,47 @@ class MyAdsActivity : AppCompatActivity() {
     private fun configViewBinding() {
         binding = ActivityMyAdsBinding.inflate(layoutInflater)
         setContentView(binding.root)
+    }
+
+    private fun configBottomNav() {
+        binding.bottomNavigation.selectedItemId = R.id.nav_my_ads
+        binding.bottomNavigation.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.nav_home -> {
+                    startActivity(Intent(applicationContext, MainActivity::class.java))
+                    finish()
+                    true
+                }
+                R.id.nav_chats -> {
+                    if (FirebaseAuth.getInstance().currentUser == null) {
+                        startActivity(Intent(applicationContext, LoginActivity::class.java))
+                    } else {
+                        startActivity(Intent(applicationContext, ChatListActivity::class.java))
+                    }
+                    true
+                }
+                R.id.nav_sell -> {
+                    if (FirebaseAuth.getInstance().currentUser == null) {
+                        startActivity(Intent(applicationContext, LoginActivity::class.java))
+                    } else {
+                        startActivity(Intent(applicationContext, RegisterAddActivity::class.java))
+                    }
+                    true
+                }
+                R.id.nav_my_ads -> {
+                    // Already on my ads page
+                    true
+                }
+                R.id.nav_account -> {
+                    if (FirebaseAuth.getInstance().currentUser == null) {
+                        startActivity(Intent(applicationContext, LoginActivity::class.java))
+                    } else {
+                        startActivity(Intent(applicationContext, ProfileActivity::class.java))
+                    }
+                    true
+                }
+                else -> false
+            }
+        }
     }
 }

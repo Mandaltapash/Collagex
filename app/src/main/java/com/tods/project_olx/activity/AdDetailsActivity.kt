@@ -102,6 +102,9 @@ class AdDetailsActivity : AppCompatActivity() {
     }
 
     private fun configSellerSection() {
+        val currentUser = User().configCurrentUser()
+        val isOwnAd = currentUser != null && currentUser.uid == selectedAd.sellerId
+        
         if (selectedAd.sellerId.isEmpty()) {
             binding.sellerContainer.visibility = View.GONE
             return
@@ -139,33 +142,50 @@ class AdDetailsActivity : AppCompatActivity() {
             }
         })
 
-        binding.buttonViewProfile.setOnClickListener {
-            val sellerId = selectedAd.sellerId
-            if (sellerId.isNotEmpty()) {
-                val intent = Intent(this, ProfileActivity::class.java)
-                intent.putExtra("userId", sellerId)
+        // Show Edit button for own ads, Profile/Message for others' ads
+        if (isOwnAd) {
+            // User's own ad - show Edit button only
+            binding.buttonEditAd.visibility = View.VISIBLE
+            binding.buttonViewProfile.visibility = View.GONE
+            binding.buttonMessageSeller.visibility = View.GONE
+            binding.buttonRateSeller.visibility = View.GONE
+            
+            binding.buttonEditAd.setOnClickListener {
+                val intent = Intent(this, EditAdActivity::class.java)
+                intent.putExtra("adToEdit", selectedAd)
                 startActivity(intent)
-            } else {
-                Toast.makeText(this, "Seller profile unavailable", Toast.LENGTH_SHORT).show()
             }
-        }
+        } else {
+            // Other user's ad - show Profile/Message buttons
+            binding.buttonEditAd.visibility = View.GONE
+            binding.buttonViewProfile.visibility = View.VISIBLE
+            binding.buttonMessageSeller.visibility = View.VISIBLE
+            
+            binding.buttonViewProfile.setOnClickListener {
+                val sellerId = selectedAd.sellerId
+                if (sellerId.isNotEmpty()) {
+                    val intent = Intent(this, ProfileActivity::class.java)
+                    intent.putExtra("userId", sellerId)
+                    startActivity(intent)
+                } else {
+                    Toast.makeText(this, "Seller profile unavailable", Toast.LENGTH_SHORT).show()
+                }
+            }
 
-        binding.buttonMessageSeller.setOnClickListener {
-            val currentUser = User().configCurrentUser()
-            if (currentUser == null) {
-                Toast.makeText(this, "Please log in to send messages", Toast.LENGTH_SHORT).show()
-                val intent = Intent(this, LoginActivity::class.java)
+            binding.buttonMessageSeller.setOnClickListener {
+                if (currentUser == null) {
+                    Toast.makeText(this, "Please log in to send messages", Toast.LENGTH_SHORT).show()
+                    val intent = Intent(this, LoginActivity::class.java)
+                    startActivity(intent)
+                    return@setOnClickListener
+                }
+
+                val intent = Intent(this, ChatActivity::class.java)
+                intent.putExtra("selectedAd", selectedAd)
                 startActivity(intent)
-                return@setOnClickListener
             }
-
-            val intent = Intent(this, ChatActivity::class.java)
-            intent.putExtra("selectedAd", selectedAd)
-            startActivity(intent)
-        }
-
-        val currentUser = User().configCurrentUser()
-        if (currentUser != null && currentUser.uid != selectedAd.sellerId) {
+            
+            // Show rate button for other users' ads
             binding.buttonRateSeller.visibility = View.VISIBLE
             binding.buttonRateSeller.setOnClickListener {
                 val intent = Intent(this, AddReviewActivity::class.java)
@@ -173,8 +193,6 @@ class AdDetailsActivity : AppCompatActivity() {
                 intent.putExtra("sellerId", selectedAd.sellerId)
                 startActivity(intent)
             }
-        } else {
-            binding.buttonRateSeller.visibility = View.GONE
         }
     }
 

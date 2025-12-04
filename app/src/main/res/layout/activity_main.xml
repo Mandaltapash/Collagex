@@ -5,55 +5,100 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5F5F5"
+    android:background="@color/background_primary"
     tools:context=".activity.MainActivity">
-
-
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/bottom_navigation">
+        android:layout_above="@id/bottom_navigation"
+        android:fillViewport="true">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="16dp"
-            android:background="@color/home_background">
+            android:padding="@dimen/spacing_standard">
 
-
-
-
-
-
-
-            <!-- Search Bar -->
+            <!-- Modern Search Bar -->
             <EditText
                 android:id="@+id/searchBar"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Search"
+                android:layout_height="@dimen/search_bar_height"
+                android:background="@drawable/bg_search_bar"
+                android:hint="Search for anything..."
                 android:drawableStart="@android:drawable/ic_menu_search"
-                android:drawablePadding="8dp"
+                android:drawablePadding="@dimen/spacing_compact"
+                android:paddingStart="@dimen/spacing_standard"
+                android:paddingEnd="@dimen/spacing_standard"
                 android:inputType="text"
-                android:layout_marginTop="16dp"/>
+                android:textSize="@dimen/text_body"
+                android:textColor="@color/text_primary"
+                android:textColorHint="@color/text_tertiary"
+                android:elevation="2dp" />
 
-            <!-- Filter Button -->
-            <Button
-                android:id="@+id/buttonFilter"
+            <!-- Filter Chips Row -->
+            <HorizontalScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Filter"
-                android:layout_marginTop="16dp"/>
+                android:layout_marginTop="@dimen/spacing_compact"
+                android:scrollbars="none">
 
-            <!-- Browse Categories header -->
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/chipGroupFilters"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:singleSelection="false">
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/buttonFilter"
+                        style="@style/Widget.MaterialComponents.Chip.Choice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/chip_height"
+                        android:text="Filters"
+                        android:textColor="@color/chip_text"
+                        app:chipBackgroundColor="@color/chip_background"
+                        app:chipIcon="@android:drawable/ic_menu_search"
+                        app:chipIconTint="@color/chip_text" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chipPrice"
+                        style="@style/Widget.MaterialComponents.Chip.Choice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/chip_height"
+                        android:text="Price"
+                        android:textColor="@color/chip_text"
+                        app:chipBackgroundColor="@color/chip_background" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chipCategory"
+                        style="@style/Widget.MaterialComponents.Chip.Choice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/chip_height"
+                        android:text="Category"
+                        android:textColor="@color/chip_text"
+                        app:chipBackgroundColor="@color/chip_background" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chipLocation"
+                        style="@style/Widget.MaterialComponents.Chip.Choice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/chip_height"
+                        android:text="Location"
+                        android:textColor="@color/chip_text"
+                        app:chipBackgroundColor="@color/chip_background"
+                        app:chipIcon="@drawable/ic_location_24"
+                        app:chipIconTint="@color/chip_text" />
+                </com.google.android.material.chip.ChipGroup>
+            </HorizontalScrollView>
+
+            <!-- Browse Categories Section -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:layout_marginTop="24dp">
+                android:layout_marginTop="@dimen/spacing_large">
 
                 <TextView
                     android:id="@+id/textCategoriesTitle"
@@ -61,7 +106,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Browse Categories"
-                    android:textSize="18sp"
+                    android:textSize="@dimen/text_title"
                     android:textStyle="bold"
                     android:textColor="@color/text_primary" />
 
@@ -70,31 +115,33 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="See more"
-                    android:textSize="14sp"
-                    android:textColor="@color/custom_accent" />
+                    android:textSize="@dimen/text_body"
+                    android:textColor="@color/accent_primary"
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerCategories"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp" />
+                android:layout_marginTop="@dimen/spacing_compact"
+                android:clipToPadding="false" />
 
-            <!-- Featured header -->
+            <!-- Featured Section -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:layout_marginTop="24dp">
+                android:layout_marginTop="@dimen/spacing_large">
 
                 <TextView
                     android:id="@+id/textRecommendationsTitle"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Featured"
-                    android:textSize="20sp"
+                    android:text="Featured Ads"
+                    android:textSize="@dimen/text_heading"
                     android:textStyle="bold"
                     android:textColor="@color/text_primary" />
 
@@ -102,18 +149,20 @@
                     android:id="@+id/textSeeMoreFeatured"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="See more"
-                    android:textSize="14sp"
-                    android:textColor="@color/custom_accent" />
+                    android:text="See all"
+                    android:textSize="@dimen/text_body"
+                    android:textColor="@color/accent_primary"
+                    android:textStyle="bold" />
             </LinearLayout>
 
-            <!-- Ads grid -->
+            <!-- Ads Grid (2 columns) -->
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerAds"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:nestedScrollingEnabled="false" />
+                android:layout_marginTop="@dimen/spacing_tight"
+                android:nestedScrollingEnabled="false"
+                android:clipToPadding="false" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
@@ -123,8 +172,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         app:menu="@menu/bottom_nav_menu"
-        android:background="?android:attr/windowBackground"/>
-
-
+        android:background="@color/surface_primary"
+        android:elevation="8dp"/>
 
 </RelativeLayout>

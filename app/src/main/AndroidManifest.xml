@@ -64,6 +64,10 @@
             android:exported="false"
             android:parentActivityName=".activity.MyAdsActivity" />
         <activity
+            android:name=".activity.EditAdActivity"
+            android:exported="false"
+            android:parentActivityName=".activity.AdDetailsActivity" />
+        <activity
             android:name=".activity.MyAdsActivity"
             android:exported="false"
             android:label="@string/title_activity_my_adds"

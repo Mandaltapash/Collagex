@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.GridLayoutManager
+import com.google.firebase.auth.FirebaseAuth
 import com.tods.project_olx.R
 import com.tods.project_olx.adapter.CategoryAdapter
 import com.tods.project_olx.databinding.ActivityCategoriesBinding
@@ -38,5 +39,48 @@ class CategoriesActivity : AppCompatActivity() {
             finish()
         }
         binding.recyclerCategories.adapter = adapter
+        configBottomNav()
+    }
+
+    private fun configBottomNav() {
+        binding.bottomNavigation.selectedItemId = R.id.nav_home
+        binding.bottomNavigation.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.nav_home -> {
+                    startActivity(Intent(applicationContext, MainActivity::class.java))
+                    finish()
+                    true
+                }
+                R.id.nav_chats -> {
+                    if (FirebaseAuth.getInstance().currentUser == null) {
+                        startActivity(Intent(applicationContext, LoginActivity::class.java))
+                    } else {
+                        startActivity(Intent(applicationContext, ChatListActivity::class.java))
+                    }
+                    true
+                }
+                R.id.nav_sell -> {
+                    if (FirebaseAuth.getInstance().currentUser == null) {
+                        startActivity(Intent(applicationContext, LoginActivity::class.java))
+                    } else {
+                        startActivity(Intent(applicationContext, RegisterAddActivity::class.java))
+                    }
+                    true
+                }
+                R.id.nav_my_ads -> {
+                    startActivity(Intent(applicationContext, MyAdsActivity::class.java))
+                    true
+                }
+                R.id.nav_account -> {
+                    if (FirebaseAuth.getInstance().currentUser == null) {
+                        startActivity(Intent(applicationContext, LoginActivity::class.java))
+                    } else {
+                        startActivity(Intent(applicationContext, ProfileActivity::class.java))
+                    }
+                    true
+                }
+                else -> false
+            }
+        }
     }
 }

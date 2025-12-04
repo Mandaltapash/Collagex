@@ -5,11 +5,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true">
+    android:fillViewport="true"
+    android:background="@android:color/white">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:paddingBottom="24dp"
         tools:context=".activity.RegisterActivity"
         tools:viewBindingIgnore="false">
 
@@ -26,17 +29,19 @@
         <EditText
             android:id="@+id/editRegisterName"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/register_name_layout_height"
+            android:layout_height="56dp"
             android:layout_marginStart="@dimen/register_layout_margin_start_end"
             android:layout_marginEnd="@dimen/register_layout_margin_start_end"
-            android:background="@drawable/ic_background_plain_text"
+            android:background="@drawable/bg_input_field_modern"
             android:drawableEnd="@drawable/ic_name_24_gray"
             android:drawablePadding="@dimen/register_name_layout_drawable_padding"
             android:ems="10"
             android:hint="@string/name"
             android:inputType="textPersonName"
-            android:paddingStart="@dimen/register_text_padding_start_end"
-            android:paddingEnd="@dimen/register_text_padding_start_end"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:textColor="@color/text_primary"
+            android:textColorHint="@color/text_tertiary"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView" />
@@ -44,17 +49,19 @@
         <EditText
             android:id="@+id/editRegisterEmail"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/register_email_layout_height"
+            android:layout_height="56dp"
             android:layout_marginStart="@dimen/register_layout_margin_start_end"
             android:layout_marginTop="@dimen/register_email_layout_margin_top"
             android:layout_marginEnd="@dimen/register_layout_margin_start_end"
-            android:background="@drawable/ic_background_plain_text"
+            android:background="@drawable/bg_input_field_modern"
             android:ems="10"
             android:inputType="textEmailAddress"
-            android:paddingStart="@dimen/register_text_padding_start_end"
-            android:paddingEnd="@dimen/register_text_padding_start_end"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
             android:drawableEnd="@drawable/ic_email_24_gray"
             android:hint="@string/e_mail"
+            android:textColor="@color/text_primary"
+            android:textColorHint="@color/text_tertiary"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -63,17 +70,19 @@
         <EditText
             android:id="@+id/editRegisterPassword"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/register_password_layout_height"
+            android:layout_height="56dp"
             android:layout_marginStart="@dimen/register_layout_margin_start_end"
             android:layout_marginTop="@dimen/register_password_layout_margin_top"
             android:layout_marginEnd="@dimen/register_layout_margin_start_end"
-            android:background="@drawable/ic_background_plain_text"
+            android:background="@drawable/bg_input_field_modern"
             android:ems="10"
             android:inputType="textPassword"
-            android:paddingStart="@dimen/register_text_padding_start_end"
-            android:paddingEnd="@dimen/register_text_padding_start_end"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
             android:drawableEnd="@drawable/ic_password_24_gray"
             android:hint="@string/password"
+            android:textColor="@color/text_primary"
+            android:textColorHint="@color/text_tertiary"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -82,54 +91,82 @@
         <EditText
             android:id="@+id/editRegisterConfirmPassword"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/register_confirm_password_layout_height"
+            android:layout_height="56dp"
             android:layout_marginStart="@dimen/register_layout_margin_start_end"
             android:layout_marginTop="@dimen/register_confirm_password_layout_margin_top"
             android:layout_marginEnd="@dimen/register_layout_margin_start_end"
-            android:background="@drawable/ic_background_plain_text"
+            android:background="@drawable/bg_input_field_modern"
             android:ems="10"
             android:inputType="textPassword"
-            android:paddingStart="@dimen/register_text_padding_start_end"
-            android:paddingEnd="@dimen/register_text_padding_start_end"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
             android:drawableEnd="@drawable/ic_password_24_gray"
             android:hint="@string/confirm_password"
+            android:textColor="@color/text_primary"
+            android:textColorHint="@color/text_tertiary"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editRegisterPassword" />
 
-        <Spinner
-            android:id="@+id/spinnerCollege"
-            android:layout_width="match_parent"
+
+        <!-- College Label -->
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="Select College"
+            android:textColor="@color/text_secondary"
+            android:textSize="@dimen/text_body"
             android:layout_marginStart="@dimen/register_layout_margin_start_end"
             android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editRegisterConfirmPassword" />
+
+        <AutoCompleteTextView
+            android:id="@+id/spinnerCollege"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginStart="@dimen/register_layout_margin_start_end"
+            android:layout_marginTop="24dp"
             android:layout_marginEnd="@dimen/register_layout_margin_start_end"
-            android:background="@drawable/ic_background_plain_text"
-            android:paddingStart="@dimen/register_text_padding_start_end"
-            android:paddingEnd="@dimen/register_text_padding_start_end"
+            android:background="@drawable/bg_input_field_modern"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:hint="Search and select your college"
+            android:textColor="@color/text_primary"
+            android:textColorHint="@color/text_tertiary"
+            android:textSize="@dimen/text_subtitle"
+            android:completionThreshold="1"
+            android:dropDownHeight="250dp"
+            android:popupBackground="@android:color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editRegisterConfirmPassword" />
 
+
+
         <Button
             android:id="@+id/buttonRegister"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/register_button_layout_height"
+            android:layout_height="56dp"
             android:layout_marginStart="@dimen/register_layout_margin_start_end"
             android:layout_marginTop="@dimen/register_button_layout_margin_top"
             android:layout_marginEnd="@dimen/register_layout_margin_start_end"
             android:text="@string/register"
+            android:textColor="@color/text_on_accent"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:elevation="4dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/spinnerCollege"
-            android:background="@drawable/ic_background_plain_text"/>
+            android:background="@drawable/bg_button_login"/>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="20dp"
             app:layout_constraintTop_toBottomOf="@id/buttonRegister"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
@@ -138,14 +175,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Already have an account?"
-                android:textColor="@color/text_primary"/>
+                android:textSize="14sp"
+                android:textColor="@color/text_secondary"/>
 
                     <TextView
                         android:id="@+id/textSigninNow"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Sign in"
-                        android:textColor="@color/custom_accent"
+                        android:textSize="14sp"
+                        android:textColor="@color/accent_primary"
                         android:textStyle="bold"
                         android:layout_marginStart="4dp"/>        </LinearLayout>
 

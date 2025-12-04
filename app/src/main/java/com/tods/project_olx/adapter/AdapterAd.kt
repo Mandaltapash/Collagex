@@ -23,13 +23,27 @@ class AdapterAd(private val adList: List<Ad>)
         with(holder){
             with(adList[position]){
                 val ad: Ad = adList[position]
+                
+                // Set text content
                 binding.textTitle.text = ad.title
                 binding.textDescription.text = ad.description
                 binding.textValue.text = ad.value
-                binding.textCollegeName.text = ad.collegeName
+                binding.textCollegeName.text = if (ad.collegeName.isNotEmpty()) ad.collegeName else "Location"
+                
+                // Load image with rounded corners
                 val urlImages: List<String> = ad.adImages
-                val urlCover: String = urlImages[0]
-                Picasso.get().load(urlCover).into(binding.imageAd)
+                if (urlImages.isNotEmpty()) {
+                    val urlCover: String = urlImages[0]
+                    Picasso.get()
+                        .load(urlCover)
+                        .fit()
+                        .centerCrop()
+                        .into(binding.imageAd)
+                }
+                
+                // Show verified badge conditionally (can be based on seller rating or verification status)
+                // For now, hide it - can be shown based on seller data later
+                binding.iconVerified.visibility = android.view.View.GONE
             }
         }
     }

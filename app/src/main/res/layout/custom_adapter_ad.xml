@@ -1,78 +1,156 @@
-<androidx.cardview.widget.CardView
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardCornerRadius="8dp"
-    app:cardElevation="4dp"
-    app:cardUseCompatPadding="true">
+    app:cardCornerRadius="@dimen/card_corner_radius"
+    app:cardElevation="@dimen/card_elevation_resting"
+    app:cardUseCompatPadding="true"
+    android:layout_margin="@dimen/spacing_minimal"
+    app:strokeWidth="0dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="?attr/colorSurface"
-        android:padding="8dp">
+        android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/imageAd"
+        <!-- Image Container with Gradient Overlay -->
+        <FrameLayout
+            android:id="@+id/imageContainer"
             android:layout_width="0dp"
-            android:layout_height="150dp"
-            android:scaleType="centerCrop"
+            android:layout_height="@dimen/ad_image_height"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            tools:srcCompat="@drawable/standard" />
+            app:layout_constraintEnd_toEndOf="parent">
 
+            <!-- Ad Image -->
+            <ImageView
+                android:id="@+id/imageAd"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:contentDescription="@string/ad_title"
+                tools:srcCompat="@drawable/standard" />
+
+            <!-- Gradient Overlay for better text visibility -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_gravity="bottom"
+                android:background="@drawable/bg_image_overlay" />
+
+            <!-- Price Tag Badge (bottom-left of image) -->
+            <TextView
+                android:id="@+id/textValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|start"
+                android:layout_margin="@dimen/spacing_compact"
+                android:background="@drawable/bg_price_tag"
+                android:paddingStart="@dimen/chip_padding_horizontal"
+                android:paddingEnd="@dimen/chip_padding_horizontal"
+                android:paddingTop="@dimen/spacing_tight"
+                android:paddingBottom="@dimen/spacing_tight"
+                android:text="@string/value"
+                android:textColor="@color/badge_text"
+                android:textSize="@dimen/text_subtitle"
+                android:textStyle="bold"
+                android:elevation="4dp"
+                tools:text="₹1,200" />
+
+        </FrameLayout>
+
+        <!-- Title -->
         <TextView
             android:id="@+id/textTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginStart="@dimen/spacing_compact"
+            android:layout_marginEnd="@dimen/spacing_compact"
+            android:layout_marginTop="@dimen/spacing_compact"
             android:text="@string/ad_title"
-            android:textColor="?android:attr/textColorPrimary"
-            android:textSize="16sp"
+            android:textColor="@color/text_primary"
+            android:textSize="@dimen/text_title"
             android:textStyle="bold"
-            app:layout_constraintTop_toBottomOf="@id/imageAd"
+            android:maxLines="2"
+            android:ellipsize="end"
+            app:layout_constraintTop_toBottomOf="@id/imageContainer"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="iPhone 13 Pro Max 256GB" />
 
-        <TextView
-            android:id="@+id/textValue"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:text="@string/value"
-            android:textColor="?android:attr/textColorPrimary"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintTop_toBottomOf="@id/textTitle"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
-
+        <!-- Description -->
         <TextView
             android:id="@+id/textDescription"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
+            android:layout_marginStart="@dimen/spacing_compact"
+            android:layout_marginEnd="@dimen/spacing_compact"
+            android:layout_marginTop="@dimen/spacing_minimal"
             android:text="@string/description"
-            android:textColor="?android:attr/textColorSecondary"
-            android:textSize="14sp"
-            app:layout_constraintTop_toBottomOf="@id/textValue"
+            android:textColor="@color/text_secondary"
+            android:textSize="@dimen/text_body"
+            android:maxLines="2"
+            android:ellipsize="end"
+            app:layout_constraintTop_toBottomOf="@id/textTitle"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="Excellent condition, barely used. All accessories included." />
 
-        <TextView
-            android:id="@+id/textCollegeName"
-            android:layout_width="0dp"
+        <!-- Location Chip -->
+        <LinearLayout
+            android:id="@+id/locationChip"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:text="College Name"
-            android:textColor="?android:attr/textColorSecondary"
-            android:textSize="12sp"
+            android:layout_marginStart="@dimen/spacing_compact"
+            android:layout_marginTop="@dimen/spacing_tight"
+            android:layout_marginBottom="@dimen/spacing_compact"
+            android:background="@drawable/bg_category_chip"
+            android:orientation="horizontal"
+            android:paddingStart="@dimen/spacing_tight"
+            android:paddingEnd="@dimen/chip_padding_horizontal"
+            android:paddingTop="@dimen/spacing_minimal"
+            android:paddingBottom="@dimen/spacing_minimal"
+            android:gravity="center_vertical"
             app:layout_constraintTop_toBottomOf="@id/textDescription"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <!-- Location Icon -->
+            <ImageView
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                android:src="@drawable/ic_location_24"
+                android:contentDescription="@string/description"
+                app:tint="@color/chip_text" />
+
+            <!-- College Name -->
+            <TextView
+                android:id="@+id/textCollegeName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_minimal"
+                android:text="College Name"
+                android:textColor="@color/chip_text"
+                android:textSize="@dimen/text_caption"
+                android:textStyle="bold"
+                tools:text="IIT Delhi" />
+        </LinearLayout>
+
+        <!-- Verified Badge (optional, shown conditionally) -->
+        <ImageView
+            android:id="@+id/iconVerified"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginEnd="@dimen/spacing_compact"
+            android:layout_marginBottom="@dimen/spacing_compact"
+            android:src="@drawable/ic_verified"
+            android:contentDescription="Verified Seller"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:visibility="visible" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.cardview.widget.CardView>
+</com.google.android.material.card.MaterialCardView>

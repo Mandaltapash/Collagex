@@ -1,5 +1,6 @@
 package com.tods.project_olx.activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -7,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
+import com.tods.project_olx.R
 import com.tods.project_olx.adapter.AdapterMessage
 import com.tods.project_olx.databinding.ActivityChatBinding
 import com.tods.project_olx.model.Ad
@@ -86,6 +88,7 @@ class ChatActivity : AppCompatActivity() {
             ensureThreadExists()
         }
         configSendButton()
+        configBottomNav()
     }
 
     private fun observeMessages() {
@@ -168,5 +171,43 @@ class ChatActivity : AppCompatActivity() {
 
             binding.editMessage.setText("")
         })
+    }
+
+    private fun configBottomNav() {
+        binding.bottomNavigation.selectedItemId = R.id.nav_chats
+        binding.bottomNavigation.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.nav_home -> {
+                    startActivity(Intent(applicationContext, MainActivity::class.java))
+                    finish()
+                    true
+                }
+                R.id.nav_chats -> {
+                    // Already on chat page
+                    true
+                }
+                R.id.nav_sell -> {
+                    if (FirebaseAuth.getInstance().currentUser == null) {
+                        startActivity(Intent(applicationContext, LoginActivity::class.java))
+                    } else {
+                        startActivity(Intent(applicationContext, RegisterAddActivity::class.java))
+                    }
+                    true
+                }
+                R.id.nav_my_ads -> {
+                    startActivity(Intent(applicationContext, MyAdsActivity::class.java))
+                    true
+                }
+                R.id.nav_account -> {
+                    if (FirebaseAuth.getInstance().currentUser == null) {
+                        startActivity(Intent(applicationContext, LoginActivity::class.java))
+                    } else {
+                        startActivity(Intent(applicationContext, ProfileActivity::class.java))
+                    }
+                    true
+                }
+                else -> false
+            }
+        }
     }
 }

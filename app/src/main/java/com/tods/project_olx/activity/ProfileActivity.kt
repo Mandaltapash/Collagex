@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.database.*
 import com.google.firebase.auth.FirebaseAuth
 import com.squareup.picasso.Picasso
+import com.tods.project_olx.R
 import com.tods.project_olx.adapter.AdapterAd
 import com.tods.project_olx.databinding.ActivityProfileBinding
 import com.tods.project_olx.helper.RecyclerItemClickListener
@@ -66,6 +67,7 @@ class ProfileActivity : AppCompatActivity() {
         }
 
         loadUser()
+        configBottomNav()
     }
 
     private fun loadUser() {
@@ -96,5 +98,43 @@ class ProfileActivity : AppCompatActivity() {
                 Toast.makeText(this@ProfileActivity, "Failed to load user", Toast.LENGTH_SHORT).show()
             }
         })
+    }
+
+    private fun configBottomNav() {
+        binding.bottomNavigation.selectedItemId = R.id.nav_account
+        binding.bottomNavigation.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.nav_home -> {
+                    startActivity(Intent(applicationContext, MainActivity::class.java))
+                    finish()
+                    true
+                }
+                R.id.nav_chats -> {
+                    if (FirebaseAuth.getInstance().currentUser == null) {
+                        startActivity(Intent(applicationContext, LoginActivity::class.java))
+                    } else {
+                        startActivity(Intent(applicationContext, ChatListActivity::class.java))
+                    }
+                    true
+                }
+                R.id.nav_sell -> {
+                    if (FirebaseAuth.getInstance().currentUser == null) {
+                        startActivity(Intent(applicationContext, LoginActivity::class.java))
+                    } else {
+                        startActivity(Intent(applicationContext, RegisterAddActivity::class.java))
+                    }
+                    true
+                }
+                R.id.nav_my_ads -> {
+                    startActivity(Intent(applicationContext, MyAdsActivity::class.java))
+                    true
+                }
+                R.id.nav_account -> {
+                    // Already on profile page
+                    true
+                }
+                else -> false
+            }
+        }
     }
 }

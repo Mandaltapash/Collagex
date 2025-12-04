@@ -47,10 +47,10 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun configCollegeSpinner() {
-        val colleges = resources.getStringArray(R.array.colleges_other)
-        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, colleges)
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        binding.spinnerCollege.adapter = adapter
+        val colleges = resources.getStringArray(R.array.assam_colleges)
+        val adapter = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, colleges)
+        binding.spinnerCollege.setAdapter(adapter)
+        binding.spinnerCollege.threshold = 1 // Show suggestions after 1 character
     }
 
     private fun register(user: User){
@@ -82,7 +82,8 @@ class RegisterActivity : AppCompatActivity() {
         val email = binding.editRegisterEmail.text.toString()
         val password = binding.editRegisterPassword.text.toString()
         val confirmPassword = binding.editRegisterConfirmPassword.text.toString()
-        selectedCollege = binding.spinnerCollege.selectedItem.toString()
+        selectedCollege = binding.spinnerCollege.text.toString() // Get text from AutoCompleteTextView
+
 
         if (name.isNotEmpty()){
             if (email.isNotEmpty()){

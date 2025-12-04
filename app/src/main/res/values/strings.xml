@@ -46,26 +46,50 @@
             <item>Other</item>
         </string-array>
     
-        <string-array name="colleges_kamrup_metropolitan">
-            <item>Select your college</item>
-            <item>Assam Engineering College</item>
-            <item>Guwahati Medical College and Hospital</item>
-            <item>Indian Institute of Technology Guwahati</item>
-            <item>Cotton University</item>
-            <item>Handique Girls\' College</item>
-        </string-array>
-    
-        <string-array name="colleges_kamrup_rural">
-            <item>Select your college</item>
-            <item>Pragjyotish College</item>
-            <item>L.C.B. College</item>
-        </string-array>
-    
-        <string-array name="colleges_other">
-            <item>Select your college</item>
-            <item>Other College 1</item>
-            <item>Other College 2</item>
-        </string-array>
+    <string-array name="assam_colleges">
+        <item>Select your college</item>
+        <item>IIT Guwahati</item>
+        <item>NIT Silchar</item>
+        <item>Assam Engineering College</item>
+        <item>Assam Medical College Dibrugarh</item>
+        <item>Guwahati Medical College</item>
+        <item>Gauhati University</item>
+        <item>Dibrugarh University</item>
+        <item>Tezpur University</item>
+        <item>Cotton University</item>
+        <item>Assam Agricultural University</item>
+        <item>Assam University Silchar</item>
+        <item>Cotton College Guwahati</item>
+        <item>Handique Girls College</item>
+        <item>B Borooah College</item>
+        <item>Pandu College</item>
+        <item>Pragjyotish College</item>
+        <item>Arya Vidyapeeth College</item>
+        <item>Gauhati Commerce College</item>
+        <item>Nowgong College</item>
+        <item>JB College Jorhat</item>
+        <item>Sibsagar College</item>
+        <item>LCB College</item>
+        <item>JM College Silchar</item>
+        <item>Gurucharan College</item>
+        <item>Cachar College</item>
+        <item>Mangaldai College</item>
+        <item>North Lakhimpur College</item>
+        <item>Bongaigaon College</item>
+        <item>Kokrajhar College</item>
+        <item>Jorhat Engineering College</item>
+        <item>Girijananda Chowdhury Institute</item>
+        <item>Royal Group of Institutions</item>
+        <item>Assam Don Bosco University</item>
+        <item>Assam Downtown University</item>
+        <item>Silchar Medical College</item>
+        <item>Jorhat Medical College</item>
+        <item>Tezpur Medical College</item>
+        <item>Guwahati Women College</item>
+        <item>Other</item>
+    </string-array>
     
     </resources>
+
+
 

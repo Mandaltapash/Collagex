@@ -105,6 +105,13 @@
                 android:layout_marginTop="8dp">
 
                 <Button
+                    android:id="@+id/buttonEditAd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Edit Ad"
+                    android:visibility="gone" />
+
+                <Button
                     android:id="@+id/buttonViewProfile"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
