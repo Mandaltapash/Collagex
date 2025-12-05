@@ -1,186 +1,373 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F5F5F5"
     tools:context=".activity.AdDetailsActivity">
 
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/viewPagerImages"
+    <!-- Main ScrollView Content -->
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="@dimen/ad_details_carousel_layout_height"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textAdDetailTitle"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/ad_details_title_layout_height"
-        android:layout_marginTop="@dimen/ad_details_title_layout_margin_top"
-        android:background="@drawable/ic_background_plain_text"
-        android:padding="@dimen/ad_details_title_layout_padding"
-        android:text="@string/title"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="@dimen/ad_details_text_size"
-        android:layout_marginStart="@dimen/ad_details_layout_margin_start_end"
-        android:layout_marginEnd="@dimen/ad_details_layout_margin_start_end"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/viewPagerImages" />
-
-    <TextView
-        android:id="@+id/textAdDetailValue"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/ad_details_value_layout_height"
-        android:layout_marginTop="@dimen/ad_details_value_layout_margin_top"
-        android:background="@drawable/ic_background_plain_text"
-        android:padding="@dimen/ad_details_value_padding"
-        android:text="@string/value"
-        android:layout_marginStart="@dimen/ad_details_layout_margin_start_end"
-        android:layout_marginEnd="@dimen/ad_details_layout_margin_start_end"
-        android:textSize="@dimen/ad_details_text_size"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textAdDetailTitle" />
-
-    <!-- Seller info card -->
-    <LinearLayout
-        android:id="@+id/sellerContainer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/ad_details_layout_margin_start_end"
-        android:layout_marginEnd="@dimen/ad_details_layout_margin_start_end"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/ic_background_plain_text"
-        android:orientation="horizontal"
-        android:padding="12dp"
-        app:layout_constraintTop_toBottomOf="@id/textAdDetailValue"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
-        <ImageView
-            android:id="@+id/imageSellerAvatar"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:src="@mipmap/ic_launcher_round"
-            android:scaleType="centerCrop" />
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
         <LinearLayout
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:layout_marginStart="12dp">
+            android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/textSellerName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Seller name"
-                android:textStyle="bold"
-                android:textColor="@color/black" />
+            <!-- Custom Toolbar -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:background="@android:color/transparent"
+                android:elevation="0dp">
 
-            <TextView
-                android:id="@+id/textSellerRating"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0.0 (0 reviews)"
-                android:textSize="12sp" />
+                <ImageButton
+                    android:id="@+id/buttonBack"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="4dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="Back"
+                    android:padding="12dp"
+                    android:src="@drawable/ic_edit"
+                    android:tint="#FFFFFF"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/textSellerLocation"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Location"
-                android:textSize="12sp" />
+                <ImageButton
+                    android:id="@+id/buttonShare"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_marginEnd="4dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="Share"
+                    android:padding="12dp"
+                    android:src="@drawable/ic_share"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
+                <ImageButton
+                    android:id="@+id/buttonFavorite"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_marginEnd="4dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="Favorite"
+                    android:padding="12dp"
+                    android:src="@drawable/ic_favorite_border"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/buttonShare"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- Image Carousel with Page Indicator -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:background="@android:color/white">
+
+                <!-- Page Indicator -->
+
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/viewPagerImages"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0" />
+
+                <TextView
+                    android:id="@+id/textPageIndicator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:background="#80000000"
+                    android:paddingStart="10dp"
+                    android:paddingTop="4dp"
+                    android:paddingEnd="10dp"
+                    android:paddingBottom="4dp"
+                    android:text="1/2"
+                    android:textColor="@android:color/white"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- Price, Title, Location Section -->
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="8dp">
+                android:background="@android:color/white"
+                android:orientation="vertical"
+                android:padding="16dp">
 
-                <Button
-                    android:id="@+id/buttonEditAd"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Edit Ad"
-                    android:visibility="gone" />
+                <!-- Price with Favorite Heart -->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-                <Button
-                    android:id="@+id/buttonViewProfile"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Profile" />
+                    <TextView
+                        android:id="@+id/textAdDetailValue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:text="₹ 20,000"
+                        android:textColor="#000000"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        tools:text="₹ 20,000" />
 
-                <Button
-                    android:id="@+id/buttonMessageSeller"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Message"
-                    android:layout_marginStart="8dp" />
+                    <ImageView
+                        android:id="@+id/iconFavoriteHeart"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_alignParentEnd="true"
+                        android:contentDescription="Favorite"
+                        android:padding="4dp"
+                        android:src="@drawable/ic_favorite_border"
+                        android:tint="#000000" />
+                </RelativeLayout>
 
-                <Button
-                    android:id="@+id/buttonRateSeller"
-                    android:layout_width="wrap_content"
+                <!-- Product Title -->
+                <TextView
+                    android:id="@+id/textAdDetailTitle"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Rate"
-                    android:layout_marginStart="8dp" />
+                    android:layout_marginTop="8dp"
+                    android:text="iPhone 12 128GB"
+                    android:textColor="#000000"
+                    android:textSize="18sp"
+                    tools:text="iPhone 12 128GB" />
+
+                <!-- Location and Time -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:contentDescription="Location"
+                        android:src="@drawable/ic_location_24"
+                        android:tint="#666666" />
+
+                    <TextView
+                        android:id="@+id/textAdLocation"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:layout_weight="1"
+                        android:text="KHANAMUKH, DHARAPUR"
+                        android:textColor="#666666"
+                        android:textSize="12sp"
+                        tools:text="KHANAMUKH, DHARAPUR" />
+
+                    <TextView
+                        android:id="@+id/textAdTimestamp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:text="TODAY"
+                        android:textColor="#666666"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        tools:text="TODAY" />
+                </LinearLayout>
             </LinearLayout>
+
+            <!-- Spacer -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="8dp"
+                android:background="#F5F5F5" />
+
+            <!-- Details Section -->
+            <LinearLayout
+                android:id="@+id/detailsSection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/details_title"
+                    android:textColor="#000000"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <!-- Details Items Container -->
+                <LinearLayout
+                    android:id="@+id/detailsContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:orientation="vertical">
+
+                    <!-- Brand Detail (Example) -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingTop="8dp"
+                        android:paddingBottom="8dp">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="BRAND"
+                            android:textColor="#666666"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/textBrand"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="IPHONE"
+                            android:textAlignment="textEnd"
+                            android:textColor="#000000"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            tools:text="IPHONE" />
+                    </LinearLayout>
+
+                    <!-- Divider -->
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#E0E0E0" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Spacer -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="8dp"
+                android:background="#F5F5F5" />
+
+            <!-- Description Section -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/description_title"
+                    android:textColor="#000000"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textAdDetailDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:lineSpacingExtra="4dp"
+                    android:text="Selling original iPhone 12 tech battery was changed"
+                    android:textColor="#333333"
+                    android:textSize="14sp"
+                    tools:text="Selling original iPhone 12 tech battery was changed" />
+            </LinearLayout>
+
+            <!-- Spacer for bottom buttons -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="80dp" />
+
         </LinearLayout>
-    </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 
-    <TextView
-        android:id="@+id/textAdDetailDescription"
-        android:layout_width="@dimen/ad_details_description_layout_width"
-        android:layout_height="0dp"
-        android:layout_marginTop="@dimen/ad_details_description_layout_margin_top_bottom"
-        android:layout_marginBottom="@dimen/ad_details_description_layout_margin_top_bottom"
-        android:background="@drawable/ic_background_plain_text"
-        android:inputType="textMultiLine"
-        android:padding="@dimen/ad_details_description_layout_padding"
-        android:scrollbarAlwaysDrawVerticalTrack="true"
-        android:text="@string/description"
-        android:textSize="@dimen/ad_details_text_size"
-        android:layout_marginStart="@dimen/ad_details_layout_margin_start_end"
-        android:layout_marginEnd="@dimen/ad_details_layout_margin_start_end"
-        app:layout_constraintBottom_toTopOf="@+id/bottomButtons"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/sellerContainer" />
-
+    <!-- Bottom Action Buttons -->
     <LinearLayout
         android:id="@+id/bottomButtons"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="@android:color/white"
+        android:elevation="8dp"
+        android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:layout_marginBottom="@dimen/ad_details_button_call_layout_margin_bottom"
-        android:layout_marginStart="@dimen/ad_details_layout_margin_start_end"
-        android:layout_marginEnd="@dimen/ad_details_layout_margin_start_end"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        android:padding="12dp">
 
-        <Button
+        <!-- Chat Button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/buttonChat"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginEnd="6dp"
+            android:layout_weight="1"
+            android:backgroundTint="#0056D2"
+            android:text="@string/button_chat"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:cornerRadius="8dp"
+            app:icon="@drawable/ic_chat"
+            app:iconGravity="textStart"
+            app:iconPadding="6dp"
+            app:iconTint="@android:color/white" />
+
+        <!-- Make Offer Button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/buttonMakeOffer"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="6dp"
+            android:layout_marginEnd="6dp"
+            android:layout_weight="1"
+            android:backgroundTint="#0056D2"
+            android:text="@string/button_make_offer"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:cornerRadius="8dp"
+            app:icon="@drawable/ic_offer"
+            app:iconGravity="textStart"
+            app:iconPadding="4dp"
+            app:iconTint="@android:color/white" />
+
+        <!-- Call Button (Coming Soon) -->
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/buttonCall"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:background="@drawable/ic_background_plain_text"
-            android:text="@string/call" />
-
-        <Button
-            android:id="@+id/buttonBuy"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:background="@drawable/ic_background_plain_text"
-            android:text="Buy"
-            android:layout_marginStart="8dp" />
+            android:layout_width="56dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="6dp"
+            android:backgroundTint="#FFD700"
+            android:enabled="false"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:textAllCaps="false"
+            android:textColor="#000000"
+            app:cornerRadius="8dp"
+            app:icon="@drawable/ic_phone_white"
+            app:iconGravity="textStart"
+            app:iconPadding="0dp"
+            app:iconSize="24dp"
+            app:iconTint="#000000" />
     </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

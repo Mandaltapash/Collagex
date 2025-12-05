@@ -131,11 +131,21 @@ class RegisterAddActivity : AppCompatActivity() {
     }
 
     private fun requestPermission(){
-        val permissions = arrayOf(
-            android.Manifest.permission.CAMERA,
-            android.Manifest.permission.READ_EXTERNAL_STORAGE,
-            android.Manifest.permission.WRITE_EXTERNAL_STORAGE
-        )
+        val permissions = if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
+            // Android 13+ (API 33+)
+            arrayOf(
+                android.Manifest.permission.CAMERA,
+                android.Manifest.permission.READ_MEDIA_IMAGES
+            )
+        } else {
+            // Android 12 and below
+            arrayOf(
+                android.Manifest.permission.CAMERA,
+                android.Manifest.permission.READ_EXTERNAL_STORAGE,
+                android.Manifest.permission.WRITE_EXTERNAL_STORAGE
+            )
+        }
+        
         val permissionsToRequest = permissions.filter {
             ContextCompat.checkSelfPermission(this, it) != PackageManager.PERMISSION_GRANTED
         }.toTypedArray()

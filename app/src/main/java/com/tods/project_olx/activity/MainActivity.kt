@@ -21,6 +21,7 @@ import com.tods.project_olx.R
 import com.tods.project_olx.databinding.ActivityMainBinding
 import com.tods.project_olx.databinding.CategoryItemBinding
 import com.tods.project_olx.helper.RecyclerItemClickListener
+import com.tods.project_olx.helper.ThemeManager
 import com.tods.project_olx.adapter.AdapterAd
 import com.tods.project_olx.model.Ad
 import com.tods.project_olx.activity.ChatListActivity
@@ -57,6 +58,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        // Apply saved theme before creating the activity
+        ThemeManager.applyTheme(ThemeManager.getTheme(this))
+        
         super.onCreate(savedInstanceState)
         configViewBinding()
         // setSupportActionBar(binding.toolbar)
@@ -377,6 +381,7 @@ class MainActivity : AppCompatActivity() {
 
     
 
+
             for (ad in ads) {
 
                 val matchesText = if (lowercaseQuery.isEmpty()) {
@@ -448,16 +453,26 @@ class MainActivity : AppCompatActivity() {
                 } ?: true
 
     
+                // Filter out ads posted by the current user
+                val isNotOwnAd = run {
+                    val currentUserId = auth.currentUser?.uid
+                    if (currentUserId != null) {
+                        ad.sellerId != currentUserId
+                    } else {
+                        true // If not logged in, show all ads
+                    }
+                }
 
     
 
-                if (matchesText && matchesCategory && matchesStatus && matchesPrice && matchesSeller && matchesRating && matchesReviews) {
+                if (matchesText && matchesCategory && matchesStatus && matchesPrice && matchesSeller && matchesRating && matchesReviews && isNotOwnAd) {
 
                     filteredAds.add(ad)
 
                 }
 
             }
+
 
             android.util.Log.d("MainActivity", "applyFilters: filteredAds.size = ${filteredAds.size}")
 

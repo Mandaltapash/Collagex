@@ -70,5 +70,25 @@
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
+    <color name="colorDivider">#E0E0E0</color>
+
+    <!-- Profile Theme Colors - Light Mode -->
+    <color name="profile_background_light">#F5F5F5</color>
+    <color name="profile_card_light">#FFFFFF</color>
+    <color name="profile_text_light">#000000</color>
+    <color name="profile_text_secondary_light">#666666</color>
+    <color name="profile_menu_bg_light">#FFFFFF</color>
+    
+    <!-- Profile Theme Colors - Dark Mode -->
+    <color name="profile_background_dark">#000000</color>
+    <color name="profile_card_dark">#1C1C1E</color>
+    <color name="profile_text_dark">#FFFFFF</color>
+    <color name="profile_text_secondary_dark">#999999</color>
+    <color name="profile_menu_bg_dark">#2C2C2E</color>
+    
+    <!-- Accent Colors -->
+    <color name="orange_accent_profile">#FF9500</color>
+    <color name="green_toggle">#34C759</color>
+    <color name="yellow_badge">#FFE5B4</color>
+    
 </resources>

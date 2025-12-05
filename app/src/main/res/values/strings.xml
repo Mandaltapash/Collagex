@@ -39,7 +39,32 @@
     <string name="all_categories">All Categories</string>
         <string name="fresh_recommendations">Fresh recommendations</string>
     
+    <!-- Product Details Strings -->
+    <string name="button_chat">Chat</string>
+    <string name="button_make_offer">Make Offer</string>
+    <string name="button_call_coming_soon">Coming Soon</string>
+    <string name="details_title">Details</string>
+    <string name="description_title">Description</string>
+    <string name="today">TODAY</string>
+    
+    <!-- Profile Screen Strings -->
+    <string name="profile_title">Profile</string>
+    <string name="edit_profile_info">Edit profile information</string>
+    <string name="notifications">Notifications</string>
+    <string name="language">Language</string>
+    <string name="security">Security</string>
+    <string name="theme">Theme</string>
+    <string name="help_support">Help &amp; Support</string>
+    <string name="contact_us">Contact us</string>
+    <string name="privacy_policy">Privacy policy</string>
+    <string name="on">ON</string>
+    <string name="off">OFF</string>
+    <string name="light_mode">Light mode</string>
+    <string name="dark_mode">Dark mode</string>
+    <string name="english">English</string>
+    
         <string-array name="guwahati_districts">
+
             <item>Select your district</item>
             <item>Kamrup Metropolitan</item>
             <item>Kamrup Rural</item>
