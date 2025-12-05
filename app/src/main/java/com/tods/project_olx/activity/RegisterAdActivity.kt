@@ -1,6 +1,7 @@
 package com.tods.project_olx.activity
 
 import android.content.Intent
+import android.content.Context
 import android.content.pm.PackageManager
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
@@ -26,6 +27,8 @@ import com.google.firebase.storage.UploadTask
 import com.google.firebase.storage.ktx.storage
 import com.tods.project_olx.R
 import com.tods.project_olx.databinding.ActivityRegisterAdBinding
+import com.tods.project_olx.helper.ThemeManager
+import com.tods.project_olx.helper.LocaleManager
 import com.tods.project_olx.model.Ad
 import com.tods.project_olx.model.User
 import dmax.dialog.SpotsDialog
@@ -49,7 +52,13 @@ class RegisterAddActivity : AppCompatActivity() {
     private var selectedDistrict: String = ""
     private var selectedCollege: String = ""
 
+    override fun attachBaseContext(newBase: Context) {
+        val language = LocaleManager.getLocale(newBase)
+        super.attachBaseContext(LocaleManager.setLocale(newBase, language))
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
+        ThemeManager.applyTheme(ThemeManager.getTheme(this))
         super.onCreate(savedInstanceState)
         configToolbar()
         configViewBinding()
@@ -87,15 +96,9 @@ class RegisterAddActivity : AppCompatActivity() {
         configClickListenerAd1()
         configClickListenerAd2()
         configClickListenerAd3()
-        configClickListenerRegisterAd()
         configSpinners()
     }
 
-    private fun configClickListenerRegisterAd() {
-        binding.buttonRegisterAd.setOnClickListener(View.OnClickListener {
-            validateAdFields()
-        })
-    }
 
     private fun configClickListenerAd1() {
         binding.imageAd1.setOnClickListener(View.OnClickListener {
@@ -121,7 +124,6 @@ class RegisterAddActivity : AppCompatActivity() {
     }
 
     private fun configToolbar() {
-        supportActionBar!!.title = "New Ad"
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
     }
 
@@ -275,13 +277,13 @@ class RegisterAddActivity : AppCompatActivity() {
 
     private fun configSpinners(){
         val categories: Array<out String> = resources.getStringArray(R.array.category)
-        val adapterCategories: ArrayAdapter<String> = ArrayAdapter(this, android.R.layout.simple_spinner_item, categories)
-        adapterCategories.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        val adapterCategories: ArrayAdapter<String> = ArrayAdapter(this, R.layout.spinner_item_closed, categories)
+        adapterCategories.setDropDownViewResource(R.layout.spinner_item_dropdown)
         binding.categoriesSpinner.adapter = adapterCategories
 
         val districts: Array<out String> = resources.getStringArray(R.array.guwahati_districts)
-        val adapterDistricts: ArrayAdapter<String> = ArrayAdapter(this, android.R.layout.simple_spinner_item, districts)
-        adapterDistricts.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        val adapterDistricts: ArrayAdapter<String> = ArrayAdapter(this, R.layout.spinner_item_closed, districts)
+        adapterDistricts.setDropDownViewResource(R.layout.spinner_item_dropdown)
         binding.districtSpinner.adapter = adapterDistricts
 
         //  Initialize college spinner with all Assam colleges
@@ -302,8 +304,8 @@ class RegisterAddActivity : AppCompatActivity() {
     private fun updateCollegeSpinner(district: String) {
         // Use unified Assam colleges list for all districts
         val colleges: Array<out String> = resources.getStringArray(R.array.assam_colleges)
-        val adapterColleges: ArrayAdapter<String> = ArrayAdapter(this, android.R.layout.simple_spinner_item, colleges)
-        adapterColleges.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        val adapterColleges: ArrayAdapter<String> = ArrayAdapter(this, R.layout.spinner_item_closed, colleges)
+        adapterColleges.setDropDownViewResource(R.layout.spinner_item_dropdown)
         binding.collegeSpinner.adapter = adapterColleges
     }
 

@@ -21,7 +21,6 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/post_ad_toolbar_height"
             android:background="@color/surface_primary"
-            app:title="Post an Ad"
             app:titleTextColor="@color/text_primary"
             app:navigationIcon="@drawable/ic_menu_send" />
 
@@ -45,7 +44,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Select District"
-                android:textColor="@color/text_secondary"
+                android:textColor="#B0B0B0"
                 android:textSize="@dimen/text_body"
                 android:layout_marginBottom="8dp" />
 
@@ -62,7 +61,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Select College"
-                android:textColor="@color/text_secondary"
+                android:textColor="#B0B0B0"
                 android:textSize="@dimen/text_body"
                 android:layout_marginTop="@dimen/post_ad_spacing"
                 android:layout_marginBottom="8dp" />
@@ -80,7 +79,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Add Images (Max 6)"
-                android:textColor="@color/text_secondary"
+                android:textColor="#B0B0B0"
                 android:textSize="@dimen/text_body"
                 android:layout_marginTop="@dimen/spacing_large"
                 android:layout_marginBottom="8dp" />
@@ -100,11 +99,18 @@
                     android:src="@drawable/ic_upload"
                     android:layout_marginBottom="8dp" />
 
-                <!-- Image Preview Container -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tap images to upload"
+                    android:textColor="#B0B0B0"
+                    android:textSize="12sp" />
+
+                <!-- Image Preview Container with uniform cropping -->
                 <LinearLayout
                     android:id="@+id/linearLayout2"
                     android:layout_width="match_parent"
-                    android:layout_height="80dp"
+                    android:layout_height="100dp"
                     android:orientation="horizontal"
                     android:gravity="center"
                     android:layout_marginTop="8dp">
@@ -116,7 +122,8 @@
                         android:layout_weight="1"
                         android:layout_margin="4dp"
                         android:scaleType="centerCrop"
-                        android:background="@drawable/bg_input_field_modern"
+                        android:background="@drawable/shape_category_logo"
+                        android:clipToOutline="true"
                         app:srcCompat="@drawable/standard" />
 
                     <ImageView
@@ -126,7 +133,8 @@
                         android:layout_weight="1"
                         android:layout_margin="4dp"
                         android:scaleType="centerCrop"
-                        android:background="@drawable/bg_input_field_modern"
+                        android:background="@drawable/shape_category_logo"
+                        android:clipToOutline="true"
                         app:srcCompat="@drawable/standard" />
 
                     <ImageView
@@ -136,7 +144,8 @@
                         android:layout_weight="1"
                         android:layout_margin="4dp"
                         android:scaleType="centerCrop"
-                        android:background="@drawable/bg_input_field_modern"
+                        android:background="@drawable/shape_category_logo"
+                        android:clipToOutline="true"
                         app:srcCompat="@drawable/standard" />
                 </LinearLayout>
 
@@ -147,7 +156,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Category"
-                android:textColor="@color/text_secondary"
+                android:textColor="#B0B0B0"
                 android:textSize="@dimen/text_body"
                 android:layout_marginTop="@dimen/spacing_large"
                 android:layout_marginBottom="8dp" />
@@ -165,7 +174,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Ad Title"
-                android:textColor="@color/text_secondary"
+                android:textColor="#B0B0B0"
                 android:textSize="@dimen/text_body"
                 android:layout_marginTop="@dimen/post_ad_spacing"
                 android:layout_marginBottom="8dp" />
@@ -176,8 +185,8 @@
                 android:layout_height="@dimen/post_ad_input_height"
                 android:background="@drawable/bg_input_field_modern"
                 android:hint="Enter ad title"
-                android:textColorHint="@color/text_tertiary"
-                android:textColor="@color/text_primary"
+                android:textColorHint="#999999"
+                android:textColor="#B0B0B0"
                 android:textSize="@dimen/text_subtitle"
                 android:inputType="textPersonName"
                 android:paddingStart="16dp"
@@ -188,7 +197,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Price (₹)"
-                android:textColor="@color/text_secondary"
+                android:textColor="#B0B0B0"
                 android:textSize="@dimen/text_body"
                 android:layout_marginTop="@dimen/post_ad_spacing"
                 android:layout_marginBottom="8dp" />
@@ -199,8 +208,8 @@
                 android:layout_height="@dimen/post_ad_input_height"
                 android:background="@drawable/bg_input_field_modern"
                 android:hint="Enter price"
-                android:textColorHint="@color/text_tertiary"
-                android:textColor="@color/text_primary"
+                android:textColorHint="#999999"
+                android:textColor="#B0B0B0"
                 android:textSize="@dimen/text_subtitle"
                 android:inputType="number"
                 android:paddingStart="16dp"
@@ -211,7 +220,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Description"
-                android:textColor="@color/text_secondary"
+                android:textColor="#B0B0B0"
                 android:textSize="@dimen/text_body"
                 android:layout_marginTop="@dimen/post_ad_spacing"
                 android:layout_marginBottom="8dp" />
@@ -222,8 +231,8 @@
                 android:layout_height="120dp"
                 android:background="@drawable/bg_input_field_modern"
                 android:hint="Enter description"
-                android:textColorHint="@color/text_tertiary"
-                android:textColor="@color/text_primary"
+                android:textColorHint="#999999"
+                android:textColor="#B0B0B0"
                 android:textSize="@dimen/text_subtitle"
                 android:inputType="textMultiLine|textCapSentences"
                 android:gravity="top|start"
@@ -231,20 +240,6 @@
                 android:paddingEnd="16dp"
                 android:paddingTop="12dp"
                 android:paddingBottom="12dp" />
-
-            <!-- Register Ad Button -->
-            <Button
-                android:id="@+id/buttonRegisterAd"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/post_ad_button_height"
-                android:layout_marginTop="@dimen/spacing_large"
-                android:layout_marginBottom="@dimen/spacing_large"
-                android:background="@drawable/bg_button_register_ad"
-                android:text="Register Ad"
-                android:textColor="@color/text_on_accent"
-                android:textSize="@dimen/text_subtitle"
-                android:textStyle="bold"
-                android:elevation="4dp" />
 
         </LinearLayout>
 

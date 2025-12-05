@@ -21,14 +21,14 @@ class CategoriesActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         val categories = listOf(
-            Category("Furniture", R.drawable.ic_menu_gallery),
-            Category("Electronics", R.drawable.ic_menu_camera),
-            Category("Fashion", R.drawable.ic_menu_compass),
-            Category("Books", R.drawable.ic_menu_agenda),
-            Category("Sports", R.drawable.ic_menu_manage),
-            Category("Free Zone", R.drawable.ic_menu_send),
-            Category("Other", R.drawable.ic_menu_help),
-            Category("Pets", android.R.drawable.btn_star)
+            Category("Furniture", R.drawable.furniture),
+            Category("Electronics", R.drawable.electronics),
+            Category("Fashion", R.drawable.fashion),
+            Category("Books", R.drawable.books),
+            Category("Others", R.drawable.others),
+            Category("Pets", R.drawable.pets),
+            Category("Freezone", R.drawable.freezone),
+            Category("Sports", R.drawable.sports)
         )
 
         binding.recyclerCategories.layoutManager = GridLayoutManager(this, 2)
@@ -47,7 +47,7 @@ class CategoriesActivity : AppCompatActivity() {
         binding.bottomNavigation.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.nav_home -> {
-                    startActivity(Intent(applicationContext, MainActivity::class.java))
+                    // Just finish to go back to MainActivity instead of starting a new one
                     finish()
                     true
                 }

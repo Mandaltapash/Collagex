@@ -1,46 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!--
-    ============================================================================
-    Professional Dark Theme Color Palette (OLX Inspired)
-    ============================================================================
-    This color palette is designed to provide a modern, clean, and professional
-    look for the application in dark mode, inspired by popular apps like OLX.
-    It uses shades of dark gray instead of pure black to reduce eye strain and
-    improve aesthetics.
-    ============================================================================
-    -->
+    <!-- Dark Mode Overrides - Matching Chats Screenshot -->
+    
+    <!-- Surface & Background Colors for Dark Mode -->
+    <color name="surface_primary">#0D4A40</color>          <!-- Dark Teal from screenshot -->
+    <color name="background_primary">#0D4A40</color>       <!-- Dark Teal from screenshot -->
+    <color name="card_background">#0D4A40</color>          <!-- Dark Teal -->
+    
+    <!-- Text Colors for Dark Mode -->
+    <color name="text_primary">#FFFFFF</color>             <!-- White -->
+    <color name="text_secondary">#B0C4C0</color>           <!-- Light Teal Gray -->
+    <color name="text_tertiary">#8A9E9A</color>            <!-- Medium Teal Gray -->
+    
+    <!-- Chip & Badge Colors for Dark Mode -->
+    <color name="chip_background">#16574D</color>          <!-- Slightly lighter teal -->
+    <color name="chip_text">#FFFFFF</color>                <!-- White -->
 
     <!-- Brand Palette (Dark Theme Optimized) -->
-    <color name="purple_primary">#002F34</color> <!-- OLX Blue -->
-    <color name="orange_accent">#FF8C00</color>  <!-- A softer, friendly orange -->
-    <color name="green_support">#81C784</color>  <!-- A pleasant, visible green -->
+    <color name="purple_primary">#0D4A40</color>           <!-- Dark Teal -->
+    <color name="orange_accent">#FF8C00</color>            <!-- Orange -->
+    <color name="green_support">#81C784</color>            <!-- Green -->
 
     <!-- Semantic Neutrals for Dark Theme -->
-    <!-- Instead of swapping 'black' and 'white', we use semantic names for clarity. -->
-    <color name="colorOnPrimary">#FFFFFF</color>   <!-- Text/icons on primary color surfaces -->
-    <color name="colorOnSecondary">#FFFFFF</color> <!-- Text/icons on secondary color surfaces -->
-    <color name="text_primary">#E0E0E0</color>    <!-- Primary text: high-emphasis (slightly off-white) -->
-    <color name="text_secondary">#BDBDBD</color>  <!-- Secondary text: medium-emphasis -->
-    <color name="icon_tint">#BDBDBD</color>      <!-- Default icon tint -->
+    <color name="colorOnPrimary">#FFFFFF</color>           <!-- Text/icons on primary -->
+    <color name="colorOnSecondary">#FFFFFF</color>         <!-- Text/icons on secondary -->
+    <color name="icon_tint">#B0C4C0</color>                <!-- Light teal icon tint -->
 
-    <!-- Background & Surface Colors (Material Design Inspired) -->
-    <!-- Using different elevations of dark gray creates a sense of depth. -->
-    <color name="home_background">#002F34</color> <!-- Base background ( darkest) -->
-    <color name="card_background">#001A1C</color> <!-- Surface color for cards, dialogs (+1dp elevation) -->
-    <color name="chip_background">#2C2C2C</color> <!-- Slightly lighter for components like chips -->
+    <!-- Background & Surface Colors -->
+    <color name="home_background">#0D4A40</color>          <!-- Dark Teal background -->
 
     <!-- Custom Aliases for Night Theme -->
     <color name="custom_primary">@color/purple_primary</color>
-    <color name="custom_primary_dark">#001A1C</color> <!-- Darker purple for the status bar -->
+    <color name="custom_primary_dark">#0A3A32</color>      <!-- Even darker teal for status bar -->
     <color name="custom_accent">@color/orange_accent</color>
-    <color name="custom_gray">#333333</color>       <!-- A neutral gray -->
-    <color name="custom_gray_bc">#BDBDBD</color>     <!-- A light gray for borders or dividers -->
+    <color name="custom_gray">#FFFFFF</color>              <!-- White text -->
+    <color name="custom_gray_bc">#0D4A40</color>           <!-- Dark Teal Background -->
 
-    <!-- Deprecated/Legacy (Avoid using directly if possible) -->
-    <color name="black">#FFFFFFFF</color> <!-- Kept for compatibility, prefer text_primary -->
-    <color name="white">#FF000000</color> <!-- Kept for compatibility, prefer home_background -->
-    <color name="light_gray">#212121</color>
-    <color name="dark_gray">#BDBDBD</color>
+    <!-- Border & Divider Colors for Dark Mode -->
+    <color name="border_light">#1A6158</color>             <!-- Lighter teal border -->
+    <color name="divider">#16574D</color>                  <!-- Teal divider -->
+    
+    <!-- Deprecated/Legacy (kept for compatibility) -->
+    <color name="black">#FFFFFFFF</color>                  <!-- White in dark mode -->
+    <color name="white">#FF000000</color>                  <!-- Black in dark mode -->
+    <color name="light_gray">#16574D</color>
+    <color name="dark_gray">#B0C4C0</color>
 
 </resources>

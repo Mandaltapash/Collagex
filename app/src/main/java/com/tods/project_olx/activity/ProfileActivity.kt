@@ -72,11 +72,6 @@ class ProfileActivity : AppCompatActivity() {
     }
 
     private fun setupClickListeners() {
-        // Settings/Edit button in header (top right)
-        binding.buttonSettings.setOnClickListener {
-            startActivity(Intent(this, EditProfileActivity::class.java))
-        }
-
         // Edit button on profile picture (pencil icon)
         binding.buttonEditAvatar.setOnClickListener {
             startActivity(Intent(this, EditProfileActivity::class.java))
@@ -111,9 +106,42 @@ class ProfileActivity : AppCompatActivity() {
             Toast.makeText(this, "Contact Us - Coming Soon", Toast.LENGTH_SHORT).show()
         }
 
+        binding.buttonLogout.setOnClickListener {
+            showLogoutDialog()
+        }
+
         binding.menuPrivacyPolicy.setOnClickListener {
             startActivity(Intent(this, PrivacyPolicyActivity::class.java))
         }
+    }
+
+    private fun showLogoutDialog() {
+        androidx.appcompat.app.AlertDialog.Builder(this)
+            .setTitle("Logout")
+            .setMessage("Are you sure you want to logout?")
+            .setPositiveButton("Yes") { dialog, _ ->
+                logout()
+                dialog.dismiss()
+            }
+            .setNegativeButton("Cancel") { dialog, _ ->
+                dialog.dismiss()
+            }
+            .show()
+    }
+
+    private fun logout() {
+        // Sign out from Firebase
+        auth.signOut()
+        
+        // Clear any saved preferences if needed
+        val sharedPreferences = getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
+        sharedPreferences.edit().clear().apply()
+        
+        // Redirect to login screen
+        val intent = Intent(this, LoginActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        startActivity(intent)
+        finish()
     }
 
     private fun toggleTheme() {

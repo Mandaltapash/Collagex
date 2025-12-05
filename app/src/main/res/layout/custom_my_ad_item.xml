@@ -27,6 +27,7 @@
             android:layout_height="70dp"
             android:scaleType="centerCrop"
             android:background="@drawable/bg_input_field_modern"
+            android:clipToOutline="true"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"

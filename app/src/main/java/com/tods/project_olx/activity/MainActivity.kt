@@ -32,22 +32,22 @@ data class Category(val name: String, val iconResId: Int)
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-    private var auth: FirebaseAuth = Firebase.auth
-
-    private lateinit var adsRef: DatabaseReference
-    private val allAds: MutableList<Ad> = mutableListOf()
-    private val filteredAds: MutableList<Ad> = mutableListOf()
     private lateinit var adsAdapter: AdapterAd
+    private lateinit var database: FirebaseDatabase
+    private lateinit var adsRef: DatabaseReference
+    private val allAds = ArrayList<Ad>()
+    private val filteredAds = ArrayList<Ad>()
+    private val auth = FirebaseAuth.getInstance()
+
     private var selectedCategory: String? = null
 
     // Advanced filters
     private var filterStatus: String? = null
+    private var filterDate: String = "Newest"
     private var filterMinPrice: Long? = null
     private var filterMaxPrice: Long? = null
-    private var filterDate: String? = null
-    private var filterSeller: String? = null // New variable
-    private var filterMinRating: Int? = null // New variable
-    private var filterHasReviews: Boolean? = null // New variable
+    private var filterDistrict: String? = null
+    private var filterCollege: String? = null
     private val categoriesLauncher = registerForActivityResult(
         androidx.activity.result.contract.ActivityResultContracts.StartActivityForResult()
     ) { result ->
@@ -248,10 +248,8 @@ class MainActivity : AppCompatActivity() {
         val spinnerDate = dialogView.findViewById<android.widget.Spinner>(R.id.spinnerDate)
         val editMinPrice = dialogView.findViewById<android.widget.EditText>(R.id.editMinPrice)
         val editMaxPrice = dialogView.findViewById<android.widget.EditText>(R.id.editMaxPrice)
-        val editSeller = dialogView.findViewById<android.widget.EditText>(R.id.editSeller) // Get reference
-        val seekBarRating = dialogView.findViewById<android.widget.SeekBar>(R.id.seekBarRating)
-        val textRatingValue = dialogView.findViewById<android.widget.TextView>(R.id.textRatingValue)
-        val switchHasReviews = dialogView.findViewById<android.widget.Switch>(R.id.switchHasReviews)
+        val spinnerDistrict = dialogView.findViewById<android.widget.AutoCompleteTextView>(R.id.spinnerDistrict)
+        val spinnerCollege = dialogView.findViewById<android.widget.AutoCompleteTextView>(R.id.spinnerCollege)
 
         // Status spinner
         val statuses = listOf("Any", "available", "sold")
@@ -272,34 +270,88 @@ class MainActivity : AppCompatActivity() {
             val index = dates.indexOf(s)
             if (index >= 0) spinnerDate.setSelection(index)
         }
-
         // Prefill prices
         filterMinPrice?.let { editMinPrice.setText(it.toString()) }
         filterMaxPrice?.let { editMaxPrice.setText(it.toString()) }
 
-        // Prefill seller
-        filterSeller?.let { editSeller.setText(it) }
-
-        // Prefill rating
-        filterMinRating?.let {
-            seekBarRating.progress = it
-            textRatingValue.text = "${it} stars"
-        } ?: run {
-            seekBarRating.progress = 0
-            textRatingValue.text = "0 stars"
+        // Setup district dropdown - All 33 districts of Assam
+        val districts = listOf(
+            "Any",
+            "Baksa", "Barpeta", "Biswanath", "Bongaigaon", "Cachar",
+            "Charaideo", "Chirang", "Darrang", "Dhemaji", "Dhubri",
+            "Dibrugarh", "Dima Hasao", "Goalpara", "Golaghat", "Hailakandi",
+            "Hojai", "Jorhat", "Kamrup", "Kamrup Metropolitan", "Karbi Anglong",
+            "Karimganj", "Kokrajhar", "Lakhimpur", "Majuli", "Morigaon",
+            "Nagaon", "Nalbari", "Sivasagar", "Sonitpur", "South Salmara-Mankachar",
+            "Tinsukia", "Udalguri", "West Karbi Anglong"
+        )
+        
+        // District to Colleges mapping
+        val districtToColleges = mapOf(
+            "Any" to listOf("Any", "Cotton University", "Gauhati University", "IIT Guwahati", "Dibrugarh University", "Tezpur University", "NIT Silchar", "Other Colleges"),
+            "Kamrup Metropolitan" to listOf("Any", "Cotton University", "Gauhati University", "IIT Guwahati", "Assam Engineering College", "Royal Global University", "Assam Don Bosco University", "B Borooah College", "Handique Girls College", "Pandu College", "Arya Vidyapeeth College"),
+            "Kamrup" to listOf("Any", "Kumar Bhaskar Varma Sanskrit College", "Nalbari College"),
+            "Dibrugarh" to listOf("Any", "Dibrugarh University", "Assam Medical College Dibrugarh", "Dibrugarh Hanumanbux Surajmal Kanoi College"),
+            "Jorhat" to listOf("Any", "Jorhat Engineering College", "Jorhat Institute of Science & Technology", "Jorhat Medical College", "JB College"),
+            "Sonitpur" to listOf("Any", "Tezpur University", "Girijananda Chowdhury Institute of Management & Technology", "Tezpur Medical College"),
+            "Cachar" to listOf("Any", "Assam University Silchar", "NIT Silchar", "Silchar Medical College", "Gurucharan College"),
+            "Nagaon" to listOf("Any", "Nowgong College", "Nagaon Commerce College", "Dhing College"),
+            "Sivasagar" to listOf("Any", "Sibsagar College", "Sribhumi College"),
+            "Golaghat" to listOf("Any", "Golaghat Commerce College", "Dergaon Kamal Dowerah College"),
+            "Barpeta" to listOf("Any", "Barpeta College", "Barpeta Girls College"),
+            "Nalbari" to listOf("Any", "Nalbari College", "Tihu College"),
+            "Kokrajhar" to listOf("Any", "Kokrajhar Government College", "Bodoland University"),
+            "Tinsukia" to listOf("Any", "Tinsukia College", "Sadiya College"),
+            "Dhubri" to listOf("Any", "Bilasipara College", "Dhubri College"),
+            "Bongaigaon" to listOf("Any", "Bongaigaon College", "Abhayapuri College"),
+            "Goalpara" to listOf("Any", "Dudhnoi College", "Goalpara College"),
+            "Lakhimpur" to listOf("Any", "North Lakhimpur College", "Dhakuakhana College"),
+            "Darrang" to listOf("Any", "Mangaldai College", "Sipajhar College"),
+            "Morigaon" to listOf("Any", "Morigaon College", "Jagiroad College"),
+            "Karbi Anglong" to listOf("Any", "Diphu Government College", "Howraghat College"),
+            "Hojai" to listOf("Any", "Hojai College", "Lanka Mahavidyalaya"),
+            "Hailakandi" to listOf("Any", "Hailakandi College"),
+            "Karimganj" to listOf("Any", "Karimganj College", "Ramkrishna Nagar College"),
+            "Biswanath" to listOf("Any", "Biswanath College", "Behali College"),
+            "Charaideo" to listOf("Any", "Sonari College"),
+            "Chirang" to listOf("Any", "Chirang College", "Bengtol College"),
+            "Dhemaji" to listOf("Any", "Dhemaji College"),
+            "Dima Hasao" to listOf("Any", "Haflong Government College"),
+            "Majuli" to listOf("Any", "Majuli College"),
+            "Baksa" to listOf("Any", "Mushalpur College", "Tamulpur College"),
+            "Udalguri" to listOf("Any", "Udalguri College", "Kalaigaon College"),
+            "South Salmara-Mankachar" to listOf("Any", "Mankachar College"),
+            "West Karbi Anglong" to listOf("Any", "Hamren College")
+        )
+        
+        val districtAdapter = android.widget.ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, districts)
+        spinnerDistrict.setAdapter(districtAdapter)
+        
+        // Initially set colleges for "Any" district
+        var currentColleges = districtToColleges["Any"] ?: listOf("Any")
+        val collegeAdapter = android.widget.ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, currentColleges.toMutableList())
+        spinnerCollege.setAdapter(collegeAdapter)
+        
+        // Add district selection listener to update colleges dynamically
+        spinnerDistrict.setOnItemClickListener { _, _, position, _ ->
+            val selectedDistrict = districts[position]
+            val collegesForDistrict = districtToColleges[selectedDistrict] ?: listOf("Any")
+            
+            // Update college dropdown
+            val newCollegeAdapter = android.widget.ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, collegesForDistrict)
+            spinnerCollege.setAdapter(newCollegeAdapter)
+            spinnerCollege.setText("", false) // Clear selection
         }
-
-        seekBarRating.setOnSeekBarChangeListener(object : android.widget.SeekBar.OnSeekBarChangeListener {
-            override fun onProgressChanged(seekBar: android.widget.SeekBar?, progress: Int, fromUser: Boolean) {
-                textRatingValue.text = "${progress} stars"
-            }
-
-            override fun onStartTrackingTouch(seekBar: android.widget.SeekBar?) {}
-            override fun onStopTrackingTouch(seekBar: android.widget.SeekBar?) {}
-        })
-
-        // Prefill has reviews switch
-        filterHasReviews?.let { switchHasReviews.isChecked = it }
+        
+        // Prefill district and college if previously selected
+        filterDistrict?.let { 
+            spinnerDistrict.setText(it, false)
+            // Update colleges for the prefilled district
+            val collegesForDistrict = districtToColleges[it] ?: listOf("Any")
+            val newCollegeAdapter = android.widget.ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, collegesForDistrict)
+            spinnerCollege.setAdapter(newCollegeAdapter)
+        }
+        filterCollege?.let { spinnerCollege.setText(it, false) }
 
         val dialog = MaterialAlertDialogBuilder(this)
             .setView(dialogView)
@@ -309,10 +361,9 @@ class MainActivity : AppCompatActivity() {
             filterStatus = null
             filterMinPrice = null
             filterMaxPrice = null
-            filterDate = null
-            filterSeller = null // Clear seller filter
-            filterMinRating = null // Clear rating filter
-            filterHasReviews = null // Clear has reviews filter
+            filterDate = "Newest first" // Reset to default instead of null
+            filterDistrict = null
+            filterCollege = null
             applyFilters()
             dialog.dismiss()
         }
@@ -329,9 +380,8 @@ class MainActivity : AppCompatActivity() {
             filterMinPrice = minPriceText.toLongOrNull()
             filterMaxPrice = maxPriceText.toLongOrNull()
 
-            filterSeller = editSeller.text.toString().trim() // Update seller filter
-            filterMinRating = seekBarRating.progress // Update rating filter
-            filterHasReviews = switchHasReviews.isChecked // Update has reviews filter
+            filterDistrict = spinnerDistrict.text.toString().trim().let { if (it == "Any" || it.isEmpty()) null else it }
+            filterCollege = spinnerCollege.text.toString().trim().let { if (it == "Any" || it.isEmpty()) null else it }
 
             applyFilters()
             dialog.dismiss()
@@ -345,134 +395,65 @@ class MainActivity : AppCompatActivity() {
         adsRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 allAds.clear()
-                for (ds in snapshot.children) {
-                    val ad = ds.getValue(Ad::class.java)
-                    if (ad != null) {
-                        allAds.add(ad)
-                    }
+                for (data in snapshot.children) {
+                    val ad = data.getValue(Ad::class.java)
+                    ad?.let { allAds.add(it) }
                 }
                 applyFilters()
             }
 
-            override fun onCancelled(error: DatabaseError) {
-                Toast.makeText(this@MainActivity, "Error loading ads", Toast.LENGTH_SHORT).show()
-            }
+            override fun onCancelled(error: DatabaseError) {}
         })
     }
 
-        private fun applyFilters() {
-
+    private fun applyFilters(searchQuery: String = "") {
+        synchronized(this) {
             android.util.Log.d("MainActivity", "applyFilters: selectedCategory = $selectedCategory")
 
             val query = binding.searchBar.text.toString()
-
             val lowercaseQuery = query.lowercase()
-
-            var ads = allAds.toList()
-
-    
-
-            if (filterDate == "Newest first") {
-
-                ads = ads.sortedByDescending { it.createdAt }
-
-            } else if (filterDate == "Oldest first") {
-
-                ads = ads.sortedBy { it.createdAt }
-
-            }
-
-    
 
             filteredAds.clear()
 
-    
-
-
-            for (ad in ads) {
-
+            for (ad in allAds) {
                 val matchesText = if (lowercaseQuery.isEmpty()) {
-
                     true
-
                 } else {
-
                     ad.title.lowercase().contains(lowercaseQuery) || ad.description.lowercase().contains(lowercaseQuery)
-
                 }
-
-    
 
                 val matchesCategory = selectedCategory?.let { cat ->
-
                     ad.category.equals(cat, ignoreCase = true)
-
                 } ?: true
 
-    
-
-                            val matchesStatus = filterStatus?.let { st ->
-
-    
-
-                                ad.status.equals(st, ignoreCase = true)
-
-    
-
-                            } ?: true
-
-    
+                val matchesStatus = filterStatus?.let { st ->
+                    ad.status.equals(st, ignoreCase = true)
+                } ?: true
 
                 val matchesPrice = run {
-
-                    val p = ad.price
-
-                    val minOk = filterMinPrice?.let { p >= it } ?: true
-
-                    val maxOk = filterMaxPrice?.let { p <= it } ?: true
-
+                    val price = ad.value.toLongOrNull() ?: 0L
+                    val minOk = filterMinPrice?.let { price >= it } ?: true
+                    val maxOk = filterMaxPrice?.let { price <= it } ?: true
                     minOk && maxOk
-
                 }
 
-    
-
-                val matchesSeller = filterSeller?.let { seller ->
-
-                    ad.sellerName.lowercase().contains(seller.lowercase())
-
+                val matchesDistrict = filterDistrict?.let { district ->
+                    ad.district.equals(district, ignoreCase = true)
                 } ?: true
 
-    
-
-                val matchesRating = filterMinRating?.let { minRating ->
-
-                    ad.ratingAverage >= minRating
-
+                val matchesCollege = filterCollege?.let { college ->
+                    ad.collegeName.equals(college, ignoreCase = true)
                 } ?: true
 
-    
-
-                val matchesReviews = filterHasReviews?.let { hasReviews ->
-
-                    if (hasReviews) ad.ratingCount > 0 else true
-
-                } ?: true
-
-    
                 // Filter out ads posted by the current user
-                val isNotOwnAd = run {
-                    val currentUserId = auth.currentUser?.uid
-                    if (currentUserId != null) {
-                        ad.sellerId != currentUserId
-                    } else {
-                        true // If not logged in, show all ads
-                    }
+                val currentUserId = auth.currentUser?.uid
+                val isNotOwnAd = if (currentUserId != null) {
+                    ad.sellerId != currentUserId
+                } else {
+                    true // If not logged in, show all ads
                 }
 
-    
-
-                if (matchesText && matchesCategory && matchesStatus && matchesPrice && matchesSeller && matchesRating && matchesReviews && isNotOwnAd) {
+                if (matchesText && matchesCategory && matchesStatus && matchesPrice && matchesDistrict && matchesCollege && isNotOwnAd) {
 
                     filteredAds.add(ad)
 
@@ -486,6 +467,7 @@ class MainActivity : AppCompatActivity() {
             adsAdapter.notifyDataSetChanged()
 
         }
+    }
 
 /*
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

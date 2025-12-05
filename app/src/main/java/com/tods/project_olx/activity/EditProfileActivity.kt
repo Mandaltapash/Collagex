@@ -306,10 +306,6 @@ class EditProfileActivity : AppCompatActivity() {
     }
 
     private fun setupClickListeners() {
-        binding.buttonBack.setOnClickListener {
-            finish()
-        }
-
         binding.buttonEditPhoto.setOnClickListener {
             imagePickerLauncher.launch("image/*")
         }

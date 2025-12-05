@@ -16,11 +16,13 @@
 
         <ImageView
             android:id="@+id/imageCategory"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:src="@android:drawable/ic_menu_gallery"
-            android:background="@drawable/ic_background_plain_text"
-            android:padding="12dp"/>
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:scaleType="centerCrop"
+            android:background="@drawable/shape_category_logo"
+            android:clipToOutline="true"
+            android:padding="8dp"
+            android:contentDescription="Category icon" />
 
         <TextView
             android:id="@+id/textCategoryName"
@@ -28,7 +30,9 @@
             android:layout_height="wrap_content"
             android:text="Category"
             android:layout_marginTop="8dp"
-            android:textAlignment="center"/>
+            android:textColor="@color/text_primary"
+            android:textSize="14sp"
+            android:textAlignment="center" />
 
     </LinearLayout>
 

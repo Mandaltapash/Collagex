@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -72,63 +73,63 @@
                 android:layout_marginStart="8dp" />
         </LinearLayout>
 
+        <!-- District Name Filter -->
         <TextView
-            style="?android:attr/textAppearanceMedium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Seller"
+            android:text="District Name"
+            android:textColor="@color/text_primary"
+            android:textSize="14sp"
+            android:textStyle="bold"
             android:layout_marginTop="16dp"
-            android:textStyle="bold" />
+            android:layout_marginBottom="8dp" />
 
-        <EditText
-            android:id="@+id/editSeller"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:background="@drawable/ic_background_plain_text"
-            android:padding="8dp"
-            android:layout_marginTop="8dp" />
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            app:boxBackgroundColor="?attr/colorSurface"
+            app:boxStrokeColor="@color/orange_accent">
 
+            <AutoCompleteTextView
+                android:id="@+id/spinnerDistrict"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Select District"
+                android:inputType="none"
+                android:textColor="?attr/colorOnSurface"
+                android:textSize="16sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- College Name Filter -->
         <TextView
-            style="?android:attr/textAppearanceMedium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Rating"
+            android:text="College Name"
+            android:textColor="@color/text_primary"
+            android:textSize="14sp"
+            android:textStyle="bold"
             android:layout_marginTop="16dp"
-            android:textStyle="bold" />
+            android:layout_marginBottom="8dp" />
 
-        <LinearLayout
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:layout_marginTop="8dp">
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            app:boxBackgroundColor="?attr/colorSurface"
+            app:boxStrokeColor="@color/orange_accent">
 
-            <SeekBar
-                android:id="@+id/seekBarRating"
-                android:layout_width="0dp"
-                android:layout_weight="1"
+            <AutoCompleteTextView
+                android:id="@+id/spinnerCollege"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:max="5"
-                android:progress="0"
-                android:paddingTop="8dp"
-                android:paddingBottom="8dp" />
+                android:hint="Select College"
+                android:inputType="none"
+                android:textColor="?attr/colorOnSurface"
+                android:textSize="16sp" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-            <TextView
-                android:id="@+id/textRatingValue"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0 stars"
-                android:layout_marginStart="8dp" />
-        </LinearLayout>
-
-        <Switch
-            android:id="@+id/switchHasReviews"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Only show items with reviews"
-            android:layout_marginTop="12dp" />
-
+        <!-- Filter Buttons -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
