@@ -16,7 +16,8 @@ data class User(
     var photoUrl: String = "",
     var ratingAverage: Double = 0.0,
     var ratingCount: Int = 0,
-    var collegeName: String = ""
+    var collegeName: String = "",
+    var state: String = ""
 ){
     private lateinit var database: DatabaseReference
     private lateinit var auth: FirebaseAuth
@@ -34,6 +35,7 @@ data class User(
         user.ratingAverage = ratingAverage
         user.ratingCount = ratingCount
         user.collegeName = collegeName
+        user.state = state
 
         database = FirebaseDatabase.getInstance().getReference("users")
         database.child(configCurrentUser()!!.uid).setValue(user)

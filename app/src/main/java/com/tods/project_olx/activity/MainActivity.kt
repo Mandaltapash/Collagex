@@ -2,6 +2,7 @@ package com.tods.project_olx.activity
 
 import android.view.LayoutInflater
 import android.content.Intent
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -22,6 +23,7 @@ import com.tods.project_olx.databinding.ActivityMainBinding
 import com.tods.project_olx.databinding.CategoryItemBinding
 import com.tods.project_olx.helper.RecyclerItemClickListener
 import com.tods.project_olx.helper.ThemeManager
+import com.tods.project_olx.helper.LocaleManager
 import com.tods.project_olx.adapter.AdapterAd
 import com.tods.project_olx.model.Ad
 import com.tods.project_olx.activity.ChatListActivity
@@ -55,6 +57,11 @@ class MainActivity : AppCompatActivity() {
             selectedCategory = category
             applyFilters()
         }
+    }
+
+    override fun attachBaseContext(newBase: Context) {
+        val language = LocaleManager.getLocale(newBase)
+        super.attachBaseContext(LocaleManager.setLocale(newBase, language))
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

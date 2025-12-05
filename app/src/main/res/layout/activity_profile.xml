@@ -26,15 +26,6 @@
                 android:paddingStart="16dp"
                 android:paddingEnd="16dp">
 
-                <ImageButton
-                    android:id="@+id/buttonBack"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_centerVertical="true"
-                    android:background="?attr/selectableItemBackgroundBorderless"
-                    android:src="@drawable/ic_edit"
-                    android:contentDescription="Back" />
-
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -51,8 +42,8 @@
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
                     android:background="?attr/selectableItemBackgroundBorderless"
-                    android:src="@drawable/ic_help"
-                    android:contentDescription="Settings" />
+                    android:src="@drawable/ic_edit_profile"
+                    android:contentDescription="Edit Profile" />
             </RelativeLayout>
 
             <!-- Profile Picture Section -->
@@ -68,7 +59,8 @@
                     android:layout_height="100dp"
                     android:src="@mipmap/ic_launcher_round"
                     android:scaleType="centerCrop"
-                    android:background="@drawable/bg_edit_button"
+                    android:background="@drawable/bg_circle_profile"
+                    android:clipToOutline="true"
                     android:contentDescription="Profile picture" />
 
                 <ImageView
@@ -81,6 +73,8 @@
                     android:src="@drawable/ic_edit_profile"
                     android:padding="6dp"
                     android:tint="@android:color/white"
+                    android:clickable="true"
+                    android:focusable="true"
                     android:contentDescription="Edit profile picture" />
             </RelativeLayout>
 

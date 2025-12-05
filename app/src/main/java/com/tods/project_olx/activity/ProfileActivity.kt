@@ -1,6 +1,7 @@
 package com.tods.project_olx.activity
 
 import android.content.Intent
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -11,6 +12,7 @@ import com.squareup.picasso.Picasso
 import com.tods.project_olx.R
 import com.tods.project_olx.databinding.ActivityProfileBinding
 import com.tods.project_olx.helper.ThemeManager
+import com.tods.project_olx.helper.LocaleManager
 import com.tods.project_olx.model.User
 
 class ProfileActivity : AppCompatActivity() {
@@ -18,6 +20,11 @@ class ProfileActivity : AppCompatActivity() {
     private lateinit var binding: ActivityProfileBinding
     private lateinit var auth: FirebaseAuth
     private var userId: String? = null
+
+    override fun attachBaseContext(newBase: Context) {
+        val language = LocaleManager.getLocale(newBase)
+        super.attachBaseContext(LocaleManager.setLocale(newBase, language))
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         // Apply saved theme before super.onCreate
@@ -65,8 +72,14 @@ class ProfileActivity : AppCompatActivity() {
     }
 
     private fun setupClickListeners() {
-        binding.buttonBack.setOnClickListener {
-            finish()
+        // Settings/Edit button in header (top right)
+        binding.buttonSettings.setOnClickListener {
+            startActivity(Intent(this, EditProfileActivity::class.java))
+        }
+
+        // Edit button on profile picture (pencil icon)
+        binding.buttonEditAvatar.setOnClickListener {
+            startActivity(Intent(this, EditProfileActivity::class.java))
         }
 
         binding.menuEditProfile.setOnClickListener {
@@ -74,13 +87,11 @@ class ProfileActivity : AppCompatActivity() {
         }
 
         binding.menuNotifications.setOnClickListener {
-            // Notifications activity - coming soon
-            Toast.makeText(this, "Notifications settings - Coming Soon", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this, NotificationsActivity::class.java))
         }
 
         binding.menuLanguage.setOnClickListener {
-            // Language activity - coming soon
-            Toast.makeText(this, "Language settings - Coming Soon", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this, LanguageActivity::class.java))
         }
 
         binding.menuSecurity.setOnClickListener {
@@ -101,8 +112,7 @@ class ProfileActivity : AppCompatActivity() {
         }
 
         binding.menuPrivacyPolicy.setOnClickListener {
-            // Privacy Policy activity - coming soon
-            Toast.makeText(this, "Privacy Policy - Coming Soon", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this, PrivacyPolicyActivity::class.java))
         }
     }
 

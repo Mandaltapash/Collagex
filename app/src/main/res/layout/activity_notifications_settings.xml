@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/colorSurface"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Header -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp">
+
+            <ImageButton
+                android:id="@+id/buttonBack"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_centerVertical="true"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_edit"
+                android:contentDescription="Back" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="Notifications"
+                android:textColor="?attr/colorOnSurface"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Common Section -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Common"
+                android:textColor="?attr/colorOnSurface"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="12dp" />
+
+            <include layout="@layout/item_notification_toggle"
+                android:id="@+id/toggleGeneralNotification" />
+            <include layout="@layout/item_notification_toggle"
+                android:id="@+id/toggleSound" />
+            <include layout="@layout/item_notification_toggle"
+                android:id="@+id/toggleVibrate" />
+
+            <!-- System & Services Update Section -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="System &amp; services update"
+                android:textColor="?attr/colorOnSurface"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="12dp" />
+
+            <include layout="@layout/item_notification_toggle"
+                android:id="@+id/toggleAppUpdates" />
+            <include layout="@layout/item_notification_toggle"
+                android:id="@+id/toggleBillReminder" />
+            <include layout="@layout/item_notification_toggle"
+                android:id="@+id/togglePromotion" />
+            <include layout="@layout/item_notification_toggle"
+                android:id="@+id/toggleDiscountAvailable" />
+            <include layout="@layout/item_notification_toggle"
+                android:id="@+id/togglePaymentRequest" />
+
+            <!-- Others Section -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Others"
+                android:textColor="?attr/colorOnSurface"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="12dp" />
+
+            <include layout="@layout/item_notification_toggle"
+                android:id="@+id/toggleNewServiceAvailable" />
+            <include layout="@layout/item_notification_toggle"
+                android:id="@+id/toggleNewTipsAvailable" />
+
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

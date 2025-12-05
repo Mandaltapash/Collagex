@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/colorSurface"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Header -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp">
+
+            <ImageButton
+                android:id="@+id/buttonBack"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_centerVertical="true"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_edit"
+                android:contentDescription="Back" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@string/language"
+                android:textColor="?attr/colorOnSurface"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <RadioGroup
+                android:id="@+id/radioGroupLanguages"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <!-- UK English -->
+                <RadioButton
+                    android:id="@+id/radioEnglishUK"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:background="@drawable/bg_profile_menu_item"
+                    android:text="English (UK)"
+                    android:textColor="?attr/colorOnSurface"
+                    android:textSize="16sp"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:buttonTint="@color/orange_accent" />
+
+                <!-- Indian English -->
+                <RadioButton
+                    android:id="@+id/radioEnglishIndia"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:background="@drawable/bg_profile_menu_item"
+                    android:text="English (India)"
+                    android:textColor="?attr/colorOnSurface"
+                    android:textSize="16sp"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:buttonTint="@color/orange_accent" />
+
+                <!-- Hindi -->
+                <RadioButton
+                    android:id="@+id/radioHindi"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:background="@drawable/bg_profile_menu_item"
+                    android:text="हिन्दी (Hindi)"
+                    android:textColor="?attr/colorOnSurface"
+                    android:textSize="16sp"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:buttonTint="@color/orange_accent" />
+
+                <!-- Assamese -->
+                <RadioButton
+                    android:id="@+id/radioAssamese"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:background="@drawable/bg_profile_menu_item"
+                    android:text="অসমীয়া (Assamese)"
+                    android:textColor="?attr/colorOnSurface"
+                    android:textSize="16sp"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:buttonTint="@color/orange_accent" />
+
+            </RadioGroup>
+
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

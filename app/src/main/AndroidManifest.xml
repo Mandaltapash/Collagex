@@ -85,6 +85,18 @@
             android:exported="false"
             android:parentActivityName=".activity.MainActivity" />
         <activity
+            android:name=".activity.NotificationsActivity"
+            android:exported="false"
+            android:parentActivityName=".activity.ProfileActivity" />
+        <activity
+            android:name=".activity.LanguageActivity"
+            android:exported="false"
+            android:parentActivityName=".activity.ProfileActivity" />
+        <activity
+            android:name=".activity.PrivacyPolicyActivity"
+            android:exported="false"
+            android:parentActivityName=".activity.ProfileActivity" />
+        <activity
             android:name=".activity.PurchaseHistoryActivity"
             android:exported="false"
             android:parentActivityName=".activity.ProfileActivity" />
